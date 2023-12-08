@@ -11,12 +11,16 @@
 </head>
 <body>
     
+    @php
+        // Misalnya, $active diatur di controller atau sebelum template ini di-render
+        $active = "login";
+    @endphp
 
-    @include('partials.navbar')
+    @include('partials.navbar', ['active' => $active])
     
     <div class="container mt-60">
         @yield('container')
-      </div>
+    </div>
 
     @include('partials.footer')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
