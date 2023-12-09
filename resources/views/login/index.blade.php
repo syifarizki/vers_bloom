@@ -2,35 +2,66 @@
 
 @section('container')
 
-<section class="flex justify-center -mt-24 ">
-<!-- @if(session()->has('success'));
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{session('success')}}
-  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='close'></button>
-</div>
-@endif; -->
+<section class="flex justify-center ">
+  <div class="fixed flex items-center -mt-32 ">
+   @if (session()->has('success')) 
+  <div id="alert-3" class="flex items-center p-4 mb-4 ml-32 text-green-800 rounded-lg bg-green-50 " role="alert">
+    <div class="ms-3 text-sm font-medium">
+      {{ session('success') }}
+    </div>
+    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8   " data-dismiss-target="#alert-3" aria-label="Close">
+      <span class="sr-only">Close</span>
+      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+      </svg>
+    </button>
+  </div>
+ @endif 
 
-<div class="w-full max-w-sm ml-44 p-4 bg-[#F8F3E7] border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+  @if (session()->has('loginError'))
+   <div id="alert-2" class="flex items-center p-4 mb-4 ml-32 text-red-800 rounded-lg bg-red-50 " role="alert">
+    <div class="ms-3 text-sm font-medium">
+       {{ session('loginError') }} 
+    </div>
+    <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8 " data-dismiss-target="#alert-2" aria-label="Close">
+      <span class="sr-only">Close</span>
+      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+      </svg>
+    </button>
+  </div>  
+   @endif 
+  </div>
+
+<div class="w-full -mt-12 max-w-sm ml-44 p-4 bg-[#F8F3E7] border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
 
   <form class="space-y-6" action="/login" method="post">
     @csrf
-      <h5 class="text-4xl font-medium text-gray-900 text-center dark:text-white -mt-3">Sign in</h5>
+      <h5 class="text-4xl font-medium text-gray-900 text-center">Sign in</h5>
       <div>
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-          <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white @error('email') is-invalid @enderror" placeholder="name@company.com" required autofocus>
-          <!-- @error('email')
-          <div class='invalid-feedback'>
-            {{message}}
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
+          <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#94B49F] focus:border-[#94B49F] block w-full p-2.5  @error('email') is-invalid @enderror" placeholder="name@company.com" required autofocus value="{{ old ('email') }}">
+            @error('email')
+          <div class="invalid-feedback">
+            {{ $message }}
           </div>
-          @enderror -->
+          @enderror 
       </div>
       <div>
-          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-          <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
+          <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#94B49F] focus:border-[#94B49F] block w-full p-2.5 " required>
       </div>
-      <button type="submit" class="w-36 text-white  ml-20 bg-[#94B49F] hover:opacity-95 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-base rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign In</button>
-      <div class="text-sm font-medium text-gray-500 dark:text-gray-300 text-center">
-        Don't have account? <a href="/register" class="text-black font-bold hover:underline dark:text-blue-500">Sign Up</a>
+      <button type="submit" class="w-56 text-black  ml-12 bg-[#94B49F] hover:opacity-95 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-base rounded-lg px-5 py-2.5 text-center">Sign In</button>
+      <button type="submit" class="w-56 text-black  ml-12 bg-[#94B49F] hover:opacity-95 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-base rounded-lg px-5 py-2.5 text-center ">
+        <svg class="w-6 h-6 inline-flex text-gray-800 dark:text-white pr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
+        <path fill-rule="evenodd" d="M8.842 18.083a8.8 8.8 0 0 1-8.65-8.948 8.841 8.841 0 0 1 8.8-8.652h.153a8.464 8.464 0 0 1 5.7 2.257l-2.193 2.038A5.27 5.27 0 0 0 9.09 3.4a5.882 5.882 0 0 0-.2 11.76h.124a5.091 5.091 0 0 0 5.248-4.057L14.3 11H9V8h8.34c.066.543.095 1.09.088 1.636-.086 5.053-3.463 8.449-8.4 8.449l-.186-.002Z" clip-rule="evenodd"/>
+        </svg> Sign In with Google</button>
+        <button type="submit" class="w-56 text-black  ml-12 bg-[#94B49F] hover:opacity-95 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-base rounded-lg px-5 py-2.5 text-center ">
+          <svg class="w-5 h-5 inline-flex text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
+            <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
+          </svg> Sign In with Facebook</button>
+      <div class="text-sm font-medium text-gray-500  text-center">
+        Don't have account? <a href="/register" class="text-black font-bold hover:underline ">Sign Up</a>
       </div>
   </form>
 </div>
