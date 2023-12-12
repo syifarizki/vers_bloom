@@ -50,7 +50,7 @@
         <a href="#" class="block py-2 px-3 text-black font-bold  md:p-0 hover:text-[#94B49F]">Contact</a>
       </li>
       <li>
-        <a href="#" class="block py-2 px-3 text-black font-bold  md:p-0 hover:text-[#94B49F]">Dashboard</a>
+        <a href="/dashboard" class="block py-2 px-3 text-black font-bold  md:p-0 hover:text-[#94B49F]">Dashboard</a>
       </li>
      
     </ul>
