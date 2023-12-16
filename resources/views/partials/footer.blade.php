@@ -35,7 +35,7 @@
             <h2 class="font-semibold   text-white uppercase dark:text-white">Menu</h2>
             <ul class="text-gray-500 dark:text-gray-400 font-medium">
                 <li class="">
-                    <a href="#" class=" hover:underline  text-white">Best Seller</a>
+                    <a href="#bestseller" class=" hover:underline  text-white">Best Seller</a>
                 </li>
                 <li class="">
                     <a href="#" class="hover:underline  text-white">About Us</a>
