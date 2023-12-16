@@ -11,7 +11,7 @@
                     <span class="block"> Get special offers and free shipping on select orders. </span>
                     <span class="block">Make your dream green home a reality by shopping now!</span></p>
 
-                    <a href="" class="text-base font-semibold text-white bg-[#94B49F] py-3 px-8 rounded-md 
+                    <a href="" class="text-base font-medium text-black bg-[#94B49F] py-3 px-8 rounded-md 
                     hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out">SHOP NOW</a>
             </div>
             <div class="w-full self-end px-4 lg:w-1/3">
@@ -23,4 +23,80 @@
     </div>
 </section> 
 {{-- Jumbotron end --}}
+
+{{-- Best Seller --}}
+<section id="bestseller" class=" mt-20 w-screen h-screen bg-fixed -ml-5 -mb-20 p-10">
+    <h3 class="font-bold  text-center text-4xl">Best Seller</h3>
+    <div class="inline-flex px-6 ">
+        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6">
+            <a href="#">
+                <img class="p-8 rounded-t-lg" src="/img/jumbotron.png" alt="product image" />
+            </a>
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Ariocarpus</h5>
+                </a>
+                <a href="#">
+                    <p class="text-md font-medium tracking-tight text-gray-900 ">catogorie</p>
+                </a>
+                <div class="flex items-center justify-between mt-5">
+                    <span class="text-lg font-bold text-green-500 ">Rp 300.000</span>
+                    <a href="#" class=" text-black bg-[#94B49F] hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 text-center">ADD TO CART</a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6">
+            <a href="#">
+                <img class="p-8 rounded-t-lg" src="/img/jumbotron.png" alt="product image" />
+            </a>
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Ariocarpus</h5>
+                </a>
+                <a href="#">
+                    <p class="text-md font-medium tracking-tight text-gray-900 ">catogorie</p>
+                </a>
+                <div class="flex items-center justify-between mt-5">
+                    <span class="text-lg font-bold text-green-500 ">Rp 300.000</span>
+                    <a href="#" class=" text-black bg-[#94B49F] hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 text-center">ADD TO CART</a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6">
+            <a href="#">
+                <img class="p-8 rounded-t-lg" src="/img/jumbotron.png" alt="product image" />
+            </a>
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Ariocarpus</h5>
+                </a>
+                <a href="#">
+                    <p class="text-md font-medium tracking-tight text-gray-900 ">catogorie</p>
+                </a>
+                <div class="flex items-center justify-between mt-5">
+                    <span class="text-lg font-bold text-green-500 ">Rp 300.000</span>
+                    <a href="#" class=" text-black bg-[#94B49F] hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 text-center">ADD TO CART</a>
+                </div>
+            </div>
+        </div>
+        <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6">
+            <a href="#">
+                <img class="p-8 rounded-t-lg" src="/img/jumbotron.png" alt="product image" />
+            </a>
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Ariocarpus</h5>
+                </a>
+                <a href="#">
+                    <p class="text-md font-medium tracking-tight text-gray-900 ">catogorie</p>
+                </a>
+                <div class="flex items-center justify-between mt-5">
+                    <span class="text-lg font-bold text-green-500 ">Rp 300.000</span>
+                    <a href="#" class=" text-black bg-[#94B49F] hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 text-center">ADD TO CART</a>
+                </div>
+            </div>
+        </div>
+</div>
+</section>
+{{-- Best Seller End --}}
 @endsection
