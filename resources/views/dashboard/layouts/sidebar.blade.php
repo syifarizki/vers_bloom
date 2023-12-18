@@ -12,7 +12,7 @@
                </svg> <span class="text-md pl-2  ">Dashboard</span></a>
            </li>
            <li class="mb-1 group">
-               <a href="#" class="flex items-center py-2 px-4 font-bold text-black hover:bg-white hover:text-black rounded-md active:bg-white "> 
+               <a href="/dashboard/posts" class="flex items-center py-2 px-4 font-bold text-black hover:bg-white hover:text-black rounded-md active:bg-white "> 
                    <svg xmlns="http://www.w3.org/2000/svg" class="text-black" width="18" height="18" viewBox="0 0 32 32"><path fill="currentColor" d="M8 18h6v2H8zm0 4h10v2H8z"/>
                        <path fill="currentColor" d="M26 4H6a2.003 2.003 0 0 0-2 2v20a2.003 2.003 0 0 0 2 2h20a2.003 2.003 0 0 0 2-2V6a2.003 2.003 0 0 0-2-2Zm-8 2v4h-4V6ZM6 26V6h6v6h8V6h6l.001 20Z"/>
                    </svg> <span class="text-md pl-2">My Products</span></a>

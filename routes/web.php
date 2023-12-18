@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -30,3 +31,5 @@ Route::get('/register',  [RegisterController::class,'index']);
 Route::post('/register',  [RegisterController::class,'store'])->middleware("guest");
 
 Route::get('/dashboard', [DashboardController::class,'showDashboard'])->middleware("auth"); 
+
+Route::resource('/dashboard/posts', DashboardPostController::class);

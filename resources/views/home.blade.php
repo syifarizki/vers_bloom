@@ -88,7 +88,7 @@
                     <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">Ariocarpus</h5>
                 </a>
                 <a href="#">
-                    <p class="text-md font-medium tracking-tight text-gray-900 ">catogorie</p>
+                    <p class="text-md font-medium tracking-tight text-gray-900 ">Category</p>
                 </a>
                 <div class="flex items-center justify-between mt-5">
                     <span class="text-lg font-bold text-green-500 ">Rp 300.000</span>
