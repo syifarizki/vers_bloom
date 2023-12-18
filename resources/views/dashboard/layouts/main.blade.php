@@ -17,5 +17,12 @@
     <div class="fixed top-0 left-0 z-40 w-64 h-screen">
         @include('dashboard.layouts.sidebar')
     </div>
+
+    {{-- header --}}
+    <div class="fixed top-0 left-0 z-30 w-full space-x-11 shadow-lg">
+        @include('dashboard.layouts.header')
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js" integrity="sha512-khqZ6XB3gzYqfJvXI2qevflbsTvd+aSpMkOVQUvXKyhRgEdORMefo3nNOvCM8584/mUoq/oBG3Vb3gfGzwQgkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
