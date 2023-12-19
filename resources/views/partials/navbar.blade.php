@@ -13,46 +13,48 @@
                     </svg>
               </a>
               
-            </li>
-            <!-- Diperbaiki yang ini -->
-      <ul class="navbar-nav ms-auto">
-        @auth 
-            <li class="nax-tem dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Welcome , {{auth()->user()->name }}
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/dashboard">My Dashboard</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li>
-                  <form action="/logout" method="post">
-                    @csrf 
-                    <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
-                  </form>
-                </li>
-              </ul>
-  
-              @else
-              <a href="/login" class="nav-link {{$active === 'login' ? 'active' : '' }}">
-                  <svg  class="w-6 h-6 text-gray-800  hover:text-[#94B49F] mr-4 ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
-                  </svg>
-               </a>
+         </li>
 
-            @endauth              
-            </li>
-            <!-- sampe ini -->
-      </ul>
-
-
-            <li>
+          <li>
               <a href="">
                   <svg href="" class="w-6 h-6 text-gray-800  hover:text-[#94B49F] mr-4 ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9V4a3 3 0 0 0-6 0v5m9.92 10H2.08a1 1 0 0 1-1-1.077L2 6h14l.917 11.923A1 1 0 0 1 15.92 19Z"/>
                     </svg>
               </a>
-              
-            </li>
+          </li>
+
+                  <li>
+                  @auth 
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" >
+                    <div class="flex justify-between">
+                    <svg  class="w-6 h-6 text-gray-800  hover:text-[#94B49F] mr-4 ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
+                    </svg> Welcome , {{auth()->user()->name }}</div>
+                  </a>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                          <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Profile</a>
+                          </li>
+                        </ul>
+                        <div class="py-1">
+                          @csrf
+                          <form action="/logout" method="post">
+                            @csrf 
+                            <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</button>
+                          </form>
+                        </div>
+                    </div>
+                    @else
+                    <a href="/login" class="nav-link {{$active === 'login' ? 'active' : '' }}">
+                      <svg  class="w-6 h-6 text-gray-800  hover:text-[#94B49F] mr-4 ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
+                      </svg>
+                   </a>
+                    @endauth  
+                </li> 
+            </ul>
       </ul>
       <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-sticky" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
