@@ -99,4 +99,23 @@
 </div>
 </section>
 {{-- Best Seller End --}}
+
+{{-- about start --}}
+<section id="about" class="pt-30 mt-16 mb-10">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">   
+        <h1 class="text-3xl font-bold text-gray-950 text-center"> About Us </h1>
+        <div class="flex flex-wrap">
+            <div class="w-full self-center bg-zinc-50 shadow-lg mt-1 rounded-lg px-4 lg:w-1/2 md:ml-10 lg:ml-10">
+                <p class="mt-6 mb-10 leading-relaxed"> Founded in 2023, at Vers Bloom we are committed to bringing beauty and joy into your life through the presence of enchanting flowers. Since our establishment, we have become a trusted destination for every floral need, delivering artistic arrangements that reflect the uniqueness of every moment.
+                    <span> </span>
+                    <span class="block mt-3"> Born out of love and admiration for the beauty of nature, Vers Bloom was born with the mission to be the link between the beauty of flowers and your heart. Every flower we offer is the intersection of superior quality, aesthetic design, and the love story you wish to express. </span>
+            </div>
+            <div class="w-full self-end px-4 lg:w-1/3">
+                <div class="mt-10">
+                     <div class="max-w-full mx-auto  w-screen h-96 lg:ml-36 bg-cover object-cover rounded-lg shadow-md " style="background-image: url(/img/about.jpg)"></div>
+                </div>
+            </div>
+        </div>   
+    </div>
+</section>
 @endsection
