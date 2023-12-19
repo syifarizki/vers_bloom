@@ -11,7 +11,7 @@
         <h5 class="text-center font-medium text-4xl text-gray-900" >Sign Up</h5>
         <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
-            <input type="text" name="firstname" id="firstname" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#94B49F] focus:border-[#94B49F] block w-full p-2.5 @error('firstname') is-invalid @enderror" placeholder="John" required autofocus>
+            <input type="text" name="name" id="name" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#94B49F] focus:border-[#94B49F] block w-full p-2.5 @error('name') is-invalid @enderror" placeholder="John" required autofocus>
             @error('name') 
             <div class="imt-2 text-sm text-red-600">
               {{ $message }}
