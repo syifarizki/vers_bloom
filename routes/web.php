@@ -5,6 +5,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,6 @@ Route::post('/register',  [RegisterController::class,'store'])->middleware("gues
 Route::get('/dashboard', [DashboardController::class,'showDashboard'])->middleware("auth"); 
 
 Route::resource('/dashboard/posts', DashboardPostController::class);
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');

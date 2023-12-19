@@ -61,30 +61,42 @@
                         </button>
                     </div>
 
+                    @auth
                     <div class="z-40 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
                         id="dropdown-2" data-popper-placement="bottom"
                         style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(1313px, 61px);">
                         <div class="px-4 py-3" role="none">
                             <p class="text-sm text-gray-900" role="none">
-                                username
+                            {{auth()->user()->name }}
                             </p>
                             <p class="text-sm font-medium text-gray-900 truncate" role="none">
-                                name@example.com
+                            {{auth()->user()->email }}
                             </p>
                         </div>
+                        
                         <ul class="py-1" role="none">
                             <li>
                                 <a href="/home"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
                                     role="menuitem">Home</a>
-                            </li>
-                            <li>
-                                <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
-                                    role="menuitem">Sign out</a>
-                            </li>
+                            </li>                           
+                            <div class="py-1">
+                          @csrf
+                          <form action="/logout" method="post">
+                            @csrf 
+                            <button type="submit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</button>
+                          </form>
+                        </div>
                         </ul>
                     </div>
+                    @else
+                    <a href="/login" class="nav-link {{$active === 'login' ? 'active' : '' }}">
+                      <svg  class="w-6 h-6 text-gray-800  hover:text-[#94B49F] mr-4 ml-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 18">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z"/>
+                      </svg>
+                   </a>
+                    @endauth
+                    
                 </div>
             </div>
         </div>
