@@ -11,7 +11,7 @@
                     <span class="block"> Get special offers and free shipping on select orders. </span>
                     <span class="block">Make your dream green home a reality by shopping now!</span></p>
 
-                    <a href="" class="text-base font-medium text-black bg-[#94B49F] py-3 px-8 rounded-md 
+                    <a href="/product" class="text-base font-medium text-black bg-[#94B49F] py-3 px-8 rounded-md 
                     hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out">SHOP NOW</a>
             </div>
             <div class="w-full self-end px-4 lg:w-1/3">
@@ -101,9 +101,9 @@
 {{-- Best Seller End --}}
 
 {{-- about start --}}
-<section id="about" class="pt-30 mt-16 mb-10">
+<section id="about" class="pt-30 mt-2 mb-10">
     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">   
-        <h1 class="text-3xl font-bold text-gray-950 text-center"> About Us </h1>
+        <h1 class="text-4xl font-bold text-gray-950 text-center"> About Us </h1>
         <div class="flex flex-wrap">
             <div class="w-full self-center bg-zinc-50 shadow-lg mt-1 rounded-lg px-4 lg:w-1/2 md:ml-10 lg:ml-10">
                 <p class="mt-6 mb-10 leading-relaxed"> Founded in 2023, at Vers Bloom we are committed to bringing beauty and joy into your life through the presence of enchanting flowers. Since our establishment, we have become a trusted destination for every floral need, delivering artistic arrangements that reflect the uniqueness of every moment.

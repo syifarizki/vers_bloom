@@ -38,7 +38,7 @@
                     <a href="#bestseller" class=" hover:underline  text-white">Best Seller</a>
                 </li>
                 <li class="">
-                    <a href="#" class="hover:underline  text-white">About Us</a>
+                    <a href="#about" class="hover:underline  text-white">About Us</a>
                 </li>
             </ul>
         </div>
