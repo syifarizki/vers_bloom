@@ -28,7 +28,6 @@
 </div>
 <div class="mb-5 px-8">
 <label class="block mb-2 text-md font-bold text-gray-900 " for="image">Post Image</label>
-<img class="object-scale-down h-48 w-48 mb-2" src="/img/jumbotron.png" alt="image description">
   <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none " aria-describedby="user_avatar_help" id="image" type="file">
 </div>
 <div class="mb-5 px-8">
