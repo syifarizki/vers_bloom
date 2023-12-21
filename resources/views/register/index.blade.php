@@ -4,7 +4,7 @@
 
 <section class="flex justify-center ">
 
-  <div class="w-full -mt-12 max-w-sm ml-44 p-4 bg-[#F8F3E7] border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+  <div class="w-full -mt-12 max-w-sm ml-4 p-4 bg-[#F8F3E7] border border-gray-200 rounded-lg shadow md:ml-20 lg:ml-36">
 
   <form class="space-y-6" action="/register" method="post">
         @csrf
