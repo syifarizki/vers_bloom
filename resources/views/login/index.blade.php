@@ -54,7 +54,7 @@
           <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#94B49F] focus:border-[#94B49F] block w-full p-2.5 " required>
       </div>
       <button type="submit" class="w-56 text-black  ml-12 bg-[#94B49F] hover:opacity-95 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-base rounded-lg px-5 py-2.5 text-center">Sign In</button>
-      <p class="text-center font-semibold">OR</p>
+      <p class="text-center mr-9 font-semibold">OR</p>
       <a href="{{ route('google.login') }}">
         <button type="button" class="w-56 mt-4 text-black ml-12 border text-base border-black hover:bg-white focus:ring-4 focus:outline-none 
         focus:ring-blue-300 font-medium rounded-lg  px-5 py-2.5 text-center me-2 mb-2  "><svg class="w-6 h-6 inline-flex text-gray-800 pr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 19">
