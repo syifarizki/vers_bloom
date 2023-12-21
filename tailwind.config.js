@@ -5,7 +5,15 @@ export default {
   "./resources/**/*.vue",
   "./node_modules/flowbite/**/*.js"],
   theme: {
-    extend: {},
+    extend: {
+      mt: {
+        '512px': '512px',
+        '1648px': '1648px',
+      },
+      height: {
+        '560px': '35rem'
+      },
+    },
   },
   plugins: [
     require('flowbite/plugin')

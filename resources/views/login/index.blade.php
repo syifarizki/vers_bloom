@@ -35,7 +35,7 @@
 
   </div>
 
-<div class="w-full -mt-12 max-w-sm ml-44 p-4 bg-[#F8F3E7] border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
+<div class="w-full -mt-12 max-w-sm ml-5 p-4 bg-[#F8F3E7] border border-gray-200 rounded-lg shadow lg:ml-36 md:ml-10 ">
 
   <form class="space-y-6" action="/login" method="post">
     @csrf
