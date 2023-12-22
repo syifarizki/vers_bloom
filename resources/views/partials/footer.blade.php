@@ -1,4 +1,4 @@
-<footer class="bg-[#224229] bg-fixed">
+<footer class="bg-[#224229] bg-fixed mt-16">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
@@ -42,10 +42,10 @@
                   <h2 class="mb-2 text-sm font-semibold text-white ml-4 uppercase">MENU</h2>
                   <ul class="text-white  font-medium">
                       <li class="mb-1 ml-4">
-                          <a href="" class="hover:underline  ">Best Seller</a>
+                          <a href="#bestseller" class="hover:underline  ">Best Seller</a>
                       </li>
                       <li>
-                          <a href="" class="hover:underline ml-4">About Us</a>
+                          <a href="#about" class="hover:underline ml-4">About Us</a>
                       </li>
                   </ul>
               </div>

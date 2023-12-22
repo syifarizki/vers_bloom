@@ -2,7 +2,7 @@
 
 @section('container')
 <div class=" sm:ml-64 border-b border-gray-200 my-12">
-  <p class="text-3xl font-bold mt-5 px-8 py-8">My Products</p>
+  <p class="text-3xl font-bold px-8 py-8">My Products</p>
 </div>
 
 @if (session()->has('success'))
@@ -48,32 +48,13 @@
       <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
           <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownDefaultButton">
             <li>
-              <a href="#" class="block px-4 py-2  hover:bg-gray-100  "> <div class="flex justify-between"> Product Name
-                <svg class="w-3 h-3  text-gray-800  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
-              </svg> </div>
-            </a>
+              <a href="#" class="block px-4 py-2  hover:bg-gray-100  "> Price low-high </a>
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100  "> <div class="flex justify-between"> Product Name
-                <svg class="w-3 h-3 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v12m0 0 4-4m-4 4L1 9"/>
-              </svg> </div>
-            </a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100  "> Price high-low </a>
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 "> <div class="flex justify-between"> Price 
-                <svg class="w-3 h-3 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
-              </svg> </div>
-            </a>
-            </li>
-            <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100"> <div class="flex justify-between"> Price 
-                <svg class="w-3 h-3 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v12m0 0 4-4m-4 4L1 9"/>
-              </svg> </div>
-            </a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Latest Product </a>
             </li>
           </ul>
       </div>
