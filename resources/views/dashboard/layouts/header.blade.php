@@ -53,11 +53,16 @@
                 <div class="flex items-center ml-3 mr-5">
                     <div>
                         <button type="button"
-                            class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
+                            class="flex text-sm ml-3"
                             id="user-menu-button-2" aria-expanded="false" data-dropdown-toggle="dropdown-2">
                             <span class="sr-only">Open user menu</span>
+                            <div class="flex justify-between ">
                             <img class="w-8 h-8 rounded-full"
-                                src="/img/logo.png" alt="user photo">
+                                src="/img/logo.png" alt="user photo"> 
+                                <p class="text-base mt-1 text-gray-900 mx-4" role="none">
+                                    Welcome , {{auth()->user()->name }}
+                                    </p>
+                            </div>
                         </button>
                     </div>
 
@@ -66,9 +71,7 @@
                         id="dropdown-2" data-popper-placement="bottom"
                         style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(1313px, 61px);">
                         <div class="px-4 py-3" role="none">
-                            <p class="text-sm text-gray-900" role="none">
-                            {{auth()->user()->name }}
-                            </p>
+                            
                             <p class="text-sm font-medium text-gray-900 truncate" role="none">
                             {{auth()->user()->email }}
                             </p>

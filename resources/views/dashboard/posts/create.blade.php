@@ -2,7 +2,15 @@
 
 @section('container')
 <div class=" sm:ml-64 border-b border-gray-200 my-12">
-    <p class="text-3xl font-bold mt-5 px-8 py-8">Create New Products</p>
+  <div class="flex justify-normal ">
+    <a href="/dashboard/posts"  class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 
+    focus:ring-green-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 mt-10 ml-6 w-8 h-8">
+      <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+      </svg>
+    </a>
+    <p class="text-3xl font-bold mt-8 mb-4 ml-3">Create New Product</p>
+  </div>
   </div>
 
 

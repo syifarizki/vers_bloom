@@ -8,7 +8,7 @@
 
   <form class="space-y-6" action="/register" method="post">
         @csrf
-        <h5 class="text-center font-medium text-4xl text-gray-900" >Sign Up</h5>
+        <p class="text-center font-medium text-4xl text-gray-900" >Sign Up</p>
         <div>
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
             <input type="text" name="name" id="name" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#94B49F] focus:border-[#94B49F] block w-full p-2.5 @error('name') is-invalid @enderror" placeholder="John" required autofocus>
