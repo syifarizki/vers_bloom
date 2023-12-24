@@ -41,3 +41,7 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 Route::get('/cart', function () {
     return view('cart');
 });
+
+Route::get('/product', function () {
+    return view('product');
+});
