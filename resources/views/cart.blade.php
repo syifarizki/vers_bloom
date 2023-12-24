@@ -23,7 +23,7 @@
 
 
 <div class="relative overflow-x-auto shadow-md rounded-lg ml-8 md:ml-32 ">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500  ">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 sm:-ml-5 ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
                 <th scope="col" class="px-16 py-3">

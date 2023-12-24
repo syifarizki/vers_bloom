@@ -10,6 +10,10 @@ export default {
         '512px': '512px',
         '1648px': '1648px',
       },
+      mb: {
+        '640px': '640px',
+        '1840px': '1840px',
+      },
       height: {
         '560px': '35rem'
       },

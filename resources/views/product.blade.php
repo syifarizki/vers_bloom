@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<section id="product" class="-mt-40 w-screen h-screen bg-fixed p-10">
+<section id="product" class="-mt-40 w-screen -ml-5 mr-10 h-screen bg-fixed p-10 mb-[1840px] md:mb-[640px] md:-ml-10 lg:mb-10 ">
     <h3 class="font-bold text-left ml-10 text-3xl">SHOP ALL PLANTS</h3>
     
     {{-- filter --}}
