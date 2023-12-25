@@ -62,6 +62,9 @@
         <a href="/product" class="block py-2 px-3 text-black font-bold  md:p-0 hover:text-[#94B49F]">Products</a>
       </li>
       <li>
+        <a href="/categories" class="block py-2 px-3 text-black font-bold  md:p-0 hover:text-[#94B49F]">Categories</a>
+      </li>
+      <li>
         <a href="/dashboard" class="block py-2 px-3 text-black font-bold  md:p-0 hover:text-[#94B49F]">Dashboard</a>
       </li>
      

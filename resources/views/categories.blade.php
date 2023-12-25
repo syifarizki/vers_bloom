@@ -2,7 +2,7 @@
 
 @section('container')
 <section id="product" class="-mt-40 w-screen -ml-5 mr-10 h-screen bg-fixed p-10 mb-[1840px] md:mb-[640px] md:-ml-10 lg:mb-10 ">
-    <h3 class="font-bold text-left ml-10 text-3xl">{{ $title }}</h3>
+    <h3 class="font-bold text-left ml-10 text-3xl">Product Categories</h3>
     
     {{-- filter --}}
     <a id="dropdownCheckboxButton" data-dropdown-toggle="dropdown" class="text-black bg-white mt-4 ml-10
@@ -71,22 +71,22 @@
 </form>
 
 
-@if ($product->count())
+
     <div class=" px-6 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4  ">
-      @foreach ($product as $detail)
-        <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6">
-            <a href="/product/{{ $detail->code }}">
-                <img class="p-8 rounded-t-lg" src="https://source.unsplash.com/500x400?{{ $detail->category->name }}" alt="{{ $detail->category->name }}" />
+      @foreach ($categories as $category)
+        <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6 ">
+            <a href="/categories/{{ $category->code }}">
+                <img class="p-8 rounded-t-lg" src="https://source.unsplash.com/500x400?{{ $category->name }}" alt="{{ $category->name }}" />
             </a>
             <div class="px-5 pb-5">
-                <a href="/product/{{ $detail->code }}">
-                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">{{ $detail->product_name }}</h5>
+                <a href="/categories/{{ $category->code }}">
+                    <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">{{ $category->name }}</h5>
                 </a>
-                <a href="/categories/{{ $detail->category->code }}">
+                {{-- <a href="/categories/{{ $detail->category->code }}">
                     <p class="text-md font-medium tracking-tight text-gray-900 ">{{ $detail->category->name }}</p>
                 </a>
                 <p class="text-lg font-bold text-green-500 mb-5 mt-1">{{ $detail->price }}</p>
-                    <a href="#" class="grid mx-9 text-black bg-[#94B49F] hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 text-center">ADD TO CART</a>
+                    <a href="#" class="grid mx-9 text-black bg-[#94B49F] hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 text-center">ADD TO CART</a> --}}
             </div>
         </div>
         {{-- <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6 ">
@@ -135,16 +135,9 @@
             </div>
         </div> --}}
         @endforeach
-      
 </div>
-@else
-   <p class="text-center text-2xl">Not Product Found</p> 
-@endif
+    
 
 </section>
-
-
-
-
 
 @endsection
