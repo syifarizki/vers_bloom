@@ -9,6 +9,7 @@ export default {
       mt: {
         '512px': '512px',
         '1648px': '1648px',
+        '1120px' : '1120px'
       },
       mb: {
         '640px': '640px',

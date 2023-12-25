@@ -108,21 +108,22 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
             </tr>
         </thead>
         <tbody>
+          @foreach ($product as $detail)
             <tr class="odd:bg-white even:bg-gray-50">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                   1
+                  {{ $loop->iteration }}
                 </th>
                 <td class="px-6 py-4">
-                    Cactus
+                  {{ $detail->product_name }}
                 </td>
                 <td class="px-6 py-4">
-                    Outdoor
+                  {{ $detail->category->name }}
                 </td>
                 <td class="px-6 py-4">
-                  Rp 300.000
+                  {{ $detail->price }}
               </td>
                 <td class="px-6 py-4 flex justify-start">
-                          <a href="#" class="text-white bg-blue-300  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 ">
+                          <a href="/dashboard/posts/{{ $detail->code}}" class="text-white bg-blue-300  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 ">
                             <svg class="w-4 h-4 text-gray-800  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                               <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                 <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
@@ -130,7 +131,7 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
                               </g>
                             </svg>
                           </a>
-                          <a href="#"  class="text-white bg-yellow-300  focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
+                          <a href="/dashboard/posts/edit"  class="text-white bg-yellow-300  focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
                             <svg class="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v3m5-3v3m5-3v3M1 7h7m1.506 3.429 2.065 2.065M19 7h-2M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm6 13H6v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L8 16Z"/>
                             </svg>
@@ -143,7 +144,7 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
                 </td>
             </tr>
             
-           
+          @endforeach 
         </tbody>
     </table>
 </div>

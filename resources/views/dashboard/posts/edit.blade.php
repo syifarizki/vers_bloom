@@ -9,7 +9,7 @@
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
       </svg>
     </a>
-    <p class="text-3xl font-bold mt-8 mb-4 ml-3">Create New Product</p>
+    <p class="text-3xl font-bold mt-8 mb-4 ml-3">Edit Product</p>
   </div>
   </div>
 
@@ -40,6 +40,7 @@
 </div>
 <div class="mb-5 px-8">
 <label class="block mb-2 text-md font-bold text-gray-900 " for="image">Post Image</label>
+<img class="object-scale-down h-48 w-48 mb-2" src="/img/jumbotron.png" alt="image description">
   <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none " aria-describedby="user_avatar_help" id="image" type="file">
 </div>
 <div class="mb-5 px-8">
@@ -48,7 +49,7 @@
   <trix-editor input="description"></trix-editor>
 </div>
 <div class="mb-5 px-8">
-<button type="submit" class="text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-bold rounded-lg text-md  px-5 py-2.5 me-2 mb-2   focus:outline-none ">Create New Product</button>
+<button type="submit" class="text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-bold rounded-lg text-md  px-5 py-2.5 me-2 mb-2   focus:outline-none ">Update Product</button>
 </div>
 </form>
 
