@@ -18,6 +18,13 @@ class DashboardProductController extends Controller
         ]);
     }
 
+    public function cetakProduk()
+    {
+        return view('dashboard.cetak', [
+            'products' => Product::all()
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
