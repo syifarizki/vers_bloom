@@ -2,23 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Product;
+
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-   public function index() {
-    return view('product', [
-        "title" => "SHOP ALL PLANTS",
-        // "product" => Product::all()
-        "product" => Product::latest()->get()
-    ]);
-   }
+    public function index() {
+        
 
-   public function show(Product $detail) {
-    return view('detail', [
-        "title" => "Detail Product",
-        "detail" => $detail
+    return view('product', [
+        "title" => "Shop All Product",
+        "products" => Product::latest()->get()
     ]);
-   } 
+    }
+
+    public function show(Product $product) {
+        return view('detail', [
+            "title" => "Detail Product",
+            "product" => $product
+        ]);
+    }
 }

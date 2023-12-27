@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class DashboardProductController extends Controller
     public function index()
     {
         return view('dashboard.posts.index', [
-            'product' => Product::all()
+            'products' => Product::all()
         ]);
     }
 
@@ -22,7 +23,9 @@ class DashboardProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create');
+        return view('dashboard.posts.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -30,7 +33,24 @@ class DashboardProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validatedData = $request->validate([
+            'product_name' => 'required|max:255',
+            'common_name' => 'required|max:255',
+            'code' => 'required|unique:products',
+            'category_id' => 'required',
+            'price' => 'required|max:255',
+            'image'=> 'image|file|max:1024',
+            'description' => 'required'
+        ]);
+
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('product-images');
+        }
+
+        Product::create($validatedData);
+
+        return redirect('/dashboard/posts')->with('success', 'New product has been added!!');
     }
 
     /**
@@ -38,7 +58,9 @@ class DashboardProductController extends Controller
      */
     public function show(Product $product)
     {
-        return $product;
+        return view('dashboard.posts.show', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -46,7 +68,9 @@ class DashboardProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('dashboard.posts.edit');
+        return view('dashboard.posts.edit', [
+            'product' => $product
+        ]);
     }
 
     /**

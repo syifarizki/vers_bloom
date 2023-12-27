@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('common_name');
             $table->string('code')->unique();
             $table->string('price');
+            $table->string('image')->nullable();
             $table->text('description');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

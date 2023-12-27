@@ -3,15 +3,19 @@
 @section('container')
 
  <div href="#" class="flex flex-col items-center ml-48 w-full h-full bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl ">
-    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://source.unsplash.com/300x200?{{ $detail->category->name }}" alt="{{ $detail->category->name }}">
+    @if ($product->image)
+    <img class="object-cover w-full rounded-t-lg max-h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->category->name }}">  
+    @else
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://source.unsplash.com/500x400?{{ $product->category->name }}" alt="{{ $product->category->name }}">  
+    @endif
     <div class="flex flex-col justify-between p-4 leading-normal">
         
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $detail->product_name}}</h5>
-       <p>Common Name : {{ $detail->common_name }}</p>
-       <p>Code : {{ $detail->code}}</p>
-        <p>Category : {{ $detail->category->name }}</p>
-        <p>{{ $detail->price }}</p>
-        {!! $detail->description !!}
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $product->product_name}}</h5>
+       <p>Common Name : {{ $product->common_name }}</p>
+       <p>Code : {{ $product->code}}</p>
+        <p>Category : {{ $product->category->name }} </p>
+        <p>{{ $product->price }}</p>
+        {!! $product->description !!}
      
         
         <form class="max-w-xs mx-auto">
