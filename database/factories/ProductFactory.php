@@ -18,10 +18,10 @@ class ProductFactory extends Factory
     {
         return [
             'product_name' => $this->faker->sentence(mt_rand(1,3)),
-            'common_name' => $this->faker->sentence(mt_rand(1,5)),
-            'code' => $this->faker->unique()->numerify('TM-####'),
+            'common_name' => $this->faker->sentence(mt_rand(1,8)),
+            'code' => $this->faker->numerify('TM-####'),
             'price' => $this->faker->numerify('Rp.###.###'),
-            'description' => collect($this->faker->paragraphs(mt_rand(1,3)))->map(fn($p) => "<p>$p<p>")->implode('') ,
+            'description' => collect($this->faker->paragraphs(mt_rand(2,4)))->map(fn($p) => "<p>$p</p>")->implode(''),
             'category_id' => mt_rand(1,2)
         ];
     }

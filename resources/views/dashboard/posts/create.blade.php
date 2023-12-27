@@ -14,37 +14,74 @@
   </div>
 
 
-<form method="post" action="dasboard/posts" class="max-w-2xl mt-10 sm:ml-64" enctype="multipart/form-data">
+<form method="post" action="/dashboard/posts" class="max-w-2xl mt-10 sm:ml-64" enctype="multipart/form-data">
+  @csrf
   <div class="mb-5 px-8">
-      <label for="product-name" class="block mb-2 text-md font-bold text-gray-900 ">Product Name</label>
-      <input type="text" id="product-name" name="product-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+      <label for="product_name" class="block mb-2 text-md font-bold text-gray-900 ">Product Name</label>
+      <input type="text" id="product_name" name="product_name" class=" text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  @error('product_name') bg-red-50 border border-red-500 @enderror" required autofocus value="{{ old('product_name')}}">
+      @error('product_name')
+      <div class="imt-2 text-sm text-red-600">
+        {{ $message }}
+      </div>
+      @enderror
   </div>
   <div class="mb-5 px-8">
-    <label for="common-name" class="block mb-2 text-md  font-bold text-gray-900 ">Common Name</label>
-    <input type="text" id="common-name" name="common-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+    <label for="common_name" class="block mb-2 text-md  font-bold text-gray-900 ">Common Name</label>
+    <input type="text" id="common_name" name="common_name" class=" text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 @error('common_name') bg-red-50 border border-red-500 @enderror "  value="{{ old('common_name')}}">
+    @error('common_name')
+    <div class="imt-2 text-sm text-red-600">
+      {{ $message }}
+    </div>
+    @enderror
   </div>
   <div class="mb-5 px-8">
     <label for="code" class="block mb-2 text-md  font-bold text-gray-900 ">Code</label>
-    <input type="text" id="code" name="code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+    <input type="text" id="code" name="code" class="text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 @error('code') bg-red-50 border border-red-500 @enderror " value="{{ old('code')}}" placeholder="TM-XXXXX">
+    @error('code')
+    <div class="imt-2 text-sm text-red-600">
+      {{ $message }}
+    </div>
+    @enderror
   </div>
   <div class="mb-5 px-8">
 <label for="category" class="block mb-2 text-md  font-bold text-gray-900 ">Category</label>
-<select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-  <option>Outdoor</option>
-  <option>Indoor</option>
+<select id="category" name="category_id" class=" text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+  @foreach ($categories as $category)
+    @if (old('category_id') == $category->id)
+    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>      
+    @else
+    <option value="{{ $category->id }}">{{ $category->name }}</option>    
+    @endif
+  
+  @endforeach
 </select>
 </div>
 <div class="mb-5 px-8">
   <label for="price" class="block mb-2 text-md font-bold text-gray-900 ">Price</label>
-  <input type="text" id="price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+  <input type="text" id="price" name="price" class=" text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 @error('price') bg-red-50 border border-red-500 @enderror " value="{{ old('price')}}" >
+  @error('price')
+  <div class="imt-2 text-sm text-red-600">
+    {{ $message }}
+  </div>
+  @enderror
 </div>
 <div class="mb-5 px-8">
 <label class="block mb-2 text-md font-bold text-gray-900 " for="image">Post Image</label>
-  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none " aria-describedby="user_avatar_help" id="image" type="file">
+  <input class="block w-full text-sm text-gray-900  rounded-lg cursor-pointer  focus:outline-none @error('image') bg-red-50 border border-red-500 @enderror" aria-describedby="user_avatar_help" id="image" name="image" type="file" >
+  @error('image')
+  <div class="imt-2 text-sm text-red-600">
+    {{ $message }}
+  </div>
+  @enderror
 </div>
 <div class="mb-5 px-8">
   <label for="description" class="block mb-2 text-md  font-bold text-gray-900 ">Description</label>
-  <input id="description"  type="hidden" name="description">
+  @error('description')
+  <div class="imt-2 text-sm text-red-600 mb-2">
+   <p>{{ $message }}</p> 
+  </div>
+  @enderror
+  <input id="description"  type="hidden" name="description" value="{{ old('description') }}">
   <trix-editor input="description"></trix-editor>
 </div>
 <div class="mb-5 px-8">

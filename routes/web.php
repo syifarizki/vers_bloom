@@ -33,12 +33,6 @@ Route::post('/logout',  [LoginController::class,'logout']);
 Route::get('/register',  [RegisterController::class,'index']);
 Route::post('/register',  [RegisterController::class,'store'])->middleware("guest");
 
-Route::get('/dashboard', function() {
-          return view('dashboard.index');
-})->middleware('auth');
-
-Route::resource('/dashboard/posts', DashboardProductController::class)->middleware('auth');
-
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
@@ -46,11 +40,9 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-
 Route::get('/product', [ProductController::class, 'index']);
-
-// halaman detail product
-Route::get('/product/{detail:code}', [ProductController::class, 'show']);
+ // halaman detail product
+Route::get('/product/{product:code}', [ProductController::class, 'show']);
 
 Route::get('/categories', function() {
     return view('categories', [
@@ -59,9 +51,17 @@ Route::get('/categories', function() {
     ]);
 });
 
+
+// pas buat searchnya ini di benerin soalnya pas buka category sama categories gabisa
 Route::get('/categories/{category:code}', function(Category $category) {
     return view('product', [
-        'title' => "Product By Category : $category->name",
-        'product' => $category->product->load('category')
+        'title' => "Product By Category: $category->name",
+        'products' => $category->products->load('category')
     ]);
 });
+
+Route::get('/dashboard', function() {
+    return view('dashboard.index');
+})->middleware('auth');
+
+Route::resource('/dashboard/posts', DashboardProductController::class)->middleware('auth');
