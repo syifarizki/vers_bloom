@@ -26,7 +26,7 @@
 
 {{-- Best Seller --}}
 <section id="bestseller" class=" mt-20 w-screen h-screen bg-fixed -ml-5 -mb-20 p-10">
-    <h3 class="font-bold  text-center text-4xl">Best Seller</h3>
+    <h3 class="font-bold  text-center text-4xl">Latest Product</h3>
     <div class=" px-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 ">
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6 ">
             <a href="#">

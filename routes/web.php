@@ -60,10 +60,13 @@ Route::get('/categories/{category:code}', function(Category $category) {
     ]);
 });
 
-Route::get('/dashboard', function() {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
 
 Route::resource('/dashboard/posts', DashboardProductController::class)->middleware('auth');
 
-Route::get('/dashboard/cetak-data', [DashboardProductController::class, 'cetakProduk'])->name('PdfReporting')->middleware('auth');
+Route::get('/dashboard/cetak-data', [DashboardProductController::class, 'cetakProduk'])->name('PdfReporting');
+
+Route::middleware(['admin'])->group(function () {
+    // Rute-rute yang memerlukan hak akses admin
+    Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
+});

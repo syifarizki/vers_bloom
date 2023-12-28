@@ -89,6 +89,7 @@
                 <a href="/categories/{{ $product->category->code }}">
                     <p class="text-md font-medium tracking-tight text-gray-900 ">{{ $product->category->name }}</p>
                 </a>
+                
                 <p class="text-lg font-bold text-green-500 mb-5 mt-1">{{ $product->price}}</p>
                     <a href="#" class="grid mx-9 text-black bg-[#94B49F] hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 text-center">ADD TO CART</a>
             </div> 
@@ -106,6 +107,7 @@
                 </a>
                 <p class="text-lg font-bold text-green-500 mb-5 mt-1">Rp 300.000</p>
                     <a href="#" class="grid mx-9 text-black bg-[#94B49F] hover:shadow-lg hover:opacity-95 transition duration-300 ease-in-out font-medium rounded-lg text-sm px-5 py-2.5 text-center">ADD TO CART</a>
+                    
             </div>
         </div>
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6 ">
