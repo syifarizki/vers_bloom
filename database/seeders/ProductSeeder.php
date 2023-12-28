@@ -16,7 +16,7 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $url = "https://perenual.com/api/species-list?key=sk-QS2Q658a6307309aa3586";
+        $url = "https://perenual.com/api/species-list?indoor=1&key=sk-QS2Q658a6307309aa3586";
     
         $response = Http::get($url);
         $products = $response->json()['data'];
@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
         foreach ($products as $product) {
             // Cari kategori berdasarkan 'watering'
             $existingCategory = Category::where('name', $product['watering'])->first();
-    
+        
             // Jika tidak ada, buat kategori baru
             if (!$existingCategory) {
                 $newCategory = Category::create(['name' => $product['watering']]);
@@ -32,22 +32,25 @@ class ProductSeeder extends Seeder
             } else {
                 $categoryId = $existingCategory->id;
             }
-    
+        
+            if (isset($product['default_image']['thumbnail'])) {
+                $thumbnailUrl = $product['default_image']['thumbnail'];
+            } 
+
             $productData = [
                 'category_id' => $categoryId,
                 'product_name' => $product['common_name'], 
                 'common_name' => $product['common_name'],
                 'watering' => $product['watering'],
-                'code' => Str::random(6),
-                'price' => Rand(50000,500000),
-                'description' => Str::random(150),                
+                'image' => $thumbnailUrl,
+                'code' => Str::random(6), // Menyertakan nilai untuk kolom 'code'
+                'price' => rand(50000, 500000), // Fungsi rand() dengan huruf kecil
+                'description' => Str::random(150),
             ];
-    
+        
             Product::create($productData);
         }
+        
     }
-
-
-   
 
 }
