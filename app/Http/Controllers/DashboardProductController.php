@@ -92,8 +92,11 @@ class DashboardProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        Product::destroy($product->id);
+
+        return redirect('/dashboard/posts')->with('success', 'Product has been deleted!!');
     }
 }
