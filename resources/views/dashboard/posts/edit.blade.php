@@ -16,8 +16,8 @@
 
 <form method="post" action="dashboard/posts/{{ $product->code }}" class="max-w-2xl mt-10 sm:ml-64" enctype="multipart/form-data">
   <div class="mb-5 px-8">
-      <label for="product-name" class="block mb-2 text-md font-bold text-gray-900 ">Product Name</label>
-      <input type="text" id="product-name" name="product-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+      <label for="product_name" class="block mb-2 text-md font-bold text-gray-900 ">Product Name</label>
+      <input type="text" id="product_name" name="product_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
   </div>
   <div class="mb-5 px-8">
     <label for="common-name" class="block mb-2 text-md  font-bold text-gray-900 ">Common Name</label>
