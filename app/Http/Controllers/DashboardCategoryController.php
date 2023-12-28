@@ -69,8 +69,11 @@ class DashboardCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        Category::destroy($category->id);
+
+        return redirect('/dashboard/categories')->with('success', 'Category has been deleted!!');
     }
 }
