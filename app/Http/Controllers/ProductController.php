@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
-
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,7 @@ class ProductController extends Controller
 
     return view('product', [
         "title" => "Shop All Product",
-        "products" => Product::latest()->get()
+        "products" => Product::latest()->paginate(10)
     ]);
     }
 
@@ -24,4 +25,8 @@ class ProductController extends Controller
             "product" => $product
         ]);
     }
+
+    
 }
+
+

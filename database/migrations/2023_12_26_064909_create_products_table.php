@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->string('price');
             $table->string('image')->nullable();
+            $table->string('watering')->nullable();
             $table->text('description');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
@@ -32,4 +33,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('products');
     }
+
+
 };

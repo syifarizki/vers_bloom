@@ -63,7 +63,7 @@ class DashboardProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( $code)
+    public function show($code)
     {
         $product = Product::where('code', $code)->first();
         return view('dashboard.posts.show', [
