@@ -24,9 +24,9 @@ class GoogleController extends Controller
 
             // Cek apakah pengguna sudah terdaftar
             $findUser = User::where('google_id', $user->getId())->first();
-
             if ($findUser) {
                 Auth::login($findUser);
+                return redirect()->intended('dashboard');
             } else {
                 // Jika belum terdaftar, buat pengguna baru
                 $newUser = User::create([
@@ -45,7 +45,8 @@ class GoogleController extends Controller
 
 
         } catch (\Exception $e) {
-           
+            return redirect()->route('login')->with('error', 'Terjadi kesalahan saat menghandle callback: ' . $e->getMessage());
         }
+        
     }
 }

@@ -65,3 +65,5 @@ Route::get('/dashboard', function() {
 })->middleware('auth');
 
 Route::resource('/dashboard/posts', DashboardProductController::class)->middleware('auth');
+
+Route::get('/dashboard/cetak-data', [DashboardProductController::class, 'cetakProduk'])->name('PdfReporting')->middleware('auth');
