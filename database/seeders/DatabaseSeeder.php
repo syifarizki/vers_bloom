@@ -7,7 +7,8 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -42,7 +43,29 @@ class DatabaseSeeder extends Seeder
             'code' => 'llp'
         ]);
 
-        Product::factory(4)->create();
+        $url = "https://perenual.com/api/species-list?key=sk-QS2Q658a6307309aa3586";
+
+        $response = Http::get($url);
+        $products = $response->json()['data'];
+        
+        foreach ($products as $product){
+            $existingCategory = Category::where('name', $product['watering'])->first();        
+            // Jika tidak ada, buat kategori baru
+            if (!$existingCategory) {
+                Category::create([
+                    'name' => $product['watering'],
+                    'code' => Str::random(6),
+                ]);
+            }                  
+        }
+
+        
+        
+
+           
+
+
+        // Product::factory(4)->create();
     //     Product::create([
     //         'product_name' => 'Peace Lily',
     //         'common_name' => 'Peace Lily',
