@@ -45,22 +45,6 @@ Route::get('/product', [ProductController::class, 'index']);
  // halaman detail product
 Route::get('/product/{product:code}', [ProductController::class, 'show']);
 
-Route::get('/categories', function() {
-    return view('categories', [
-        'title' =>'Product Categories',
-        'categories' => Category::all()
-    ]);
-});
-
-
-// pas buat searchnya ini di benerin soalnya pas buka category sama categories gabisa
-Route::get('/categories/{category:code}', function(Category $category) {
-    return view('product', [
-        'title' => "Product By Category: $category->name",
-        'products' => $category->products
-    ]);
-});
-
 Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
 
 Route::resource('/dashboard/posts', DashboardProductController::class)->middleware('auth');
@@ -72,4 +56,17 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
 });
 
+//Category
+
+Route::get('/categories', function() {
+    return view('categories', [
+        'title' => 'Product Categories',
+        'categories' => Category::all()
+    ]);
+});
+
+// Rute resource
 Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show')->middleware('auth');
+
+Route::get('/dashboard/categories/{category:code}/edit', [DashboardCategoryController::class, 'edit'])->name('dashboard.categories.edit');
+

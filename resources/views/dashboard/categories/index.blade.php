@@ -105,7 +105,7 @@
                   {{ $category->code }}
                 </td>
                 <td class="px-6 py-4 flex justify-start">
-                    <a href="/dashboard/categories/{{$category->code}}/edit"  class="text-white bg-yellow-300  focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
+                <a href="{{ route('dashboard.categories.edit', ['category' => $category->code]) }}"  class="text-white bg-yellow-300  focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
                         <svg class="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v3m5-3v3m5-3v3M1 7h7m1.506 3.429 2.065 2.065M19 7h-2M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm6 13H6v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L8 16Z"/>
                         </svg>
