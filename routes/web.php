@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardCategoryController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -56,7 +57,7 @@ Route::get('/categories', function() {
 Route::get('/categories/{category:code}', function(Category $category) {
     return view('product', [
         'title' => "Product By Category: $category->name",
-        'products' => $category->products->load('category')
+        'products' => $category->products
     ]);
 });
 
@@ -70,3 +71,5 @@ Route::middleware(['admin'])->group(function () {
     // Rute-rute yang memerlukan hak akses admin
     Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
 });
+
+Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show')->middleware('auth');

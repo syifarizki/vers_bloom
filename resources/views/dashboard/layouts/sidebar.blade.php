@@ -18,7 +18,7 @@
                    </svg> <span class="text-md pl-2">My Products</span></a>
            </li>
            <li class="mb-1 group">
-            <a href="#" class="flex items-center py-2 px-4 font-bold text-black hover:bg-white hover:text-black rounded-md active:bg-white "> 
+            <a href="/dashboard/categories" class="flex items-center py-2 px-4 font-bold text-black hover:bg-white hover:text-black rounded-md active:bg-white "> 
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-black" width="18" height="18" viewBox="0 0 24 24">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 3a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/>
                 </svg><span class="text-md pl-2 ">Categories</span></a>

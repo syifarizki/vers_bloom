@@ -2,7 +2,7 @@
 
 @section('container')
 <div class=" sm:ml-64 border-b border-gray-200 mt-14 pt-8 mb-5 flex justify-between">
-  <p class="text-4xl font-bold px-8 py-8">My Products</p>
+  <p class="text-4xl font-bold px-8 py-8">Product Categories</p>
 <form class="mt-3 mr-3">   
   <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
   <div class="relative ">
@@ -37,8 +37,8 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-5 sm:ml-64 px-8 pt-5 -mt-5  ">
   <div class="flex justify-start">
     {{-- create --}}
-  <a href="/dashboard/posts/create" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 
-  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4">Create New Product</a>
+  <a href="/dashboard/categories/create" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 
+  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4">Create New Category</a>
 
   {{-- pdf --}}
   <a href="{{route ('PdfReporting') }}" target="_blank"   class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300
@@ -62,42 +62,16 @@
       <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
           <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownDefaultButton">
             <li>
-              <a href="#" class="block px-4 py-2  hover:bg-gray-100  "> Price low-high </a>
+              <a href="#" class="block px-4 py-2  hover:bg-gray-100  ">A to Z</a>
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100  "> Price high-low </a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100  ">Z to A </a>
             </li>
             <li>
               <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Latest Product </a>
             </li>
           </ul>
       </div>
-      
-      {{-- filter --}}
-      
-<a id="dropdownCheckboxButton" data-dropdown-toggle="dropdownDefaultCheckbox" class="text-white bg-green-700
-hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg 
-text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="button"> <svg class="w-4 h-4 text-white  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2.133 2.6 5.856 6.9L8 14l4 3 .011-7.5 5.856-6.9a1 1 0 0 0-.804-1.6H2.937a1 1 0 0 0-.804 1.6Z"/>
-</svg> Filter by 
-  <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-  </svg>
-</a>
-  
-  <!-- Dropdown menu -->
-  <div id="dropdownDefaultCheckbox" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow ">
-      <ul class="p-3 space-y-3 text-sm text-gray-700 " aria-labelledby="dropdownCheckboxButton">
-        <li>
-          <div class="flex items-center">
-            <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500  focus:ring-2 ">
-            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 ">Category</label>
-          </div>
-        </li>
-        <li>
-        
-      </ul>
-  </div>
   
     </div> 
 
@@ -108,48 +82,34 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
                    No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Product Name
+                    Category Name
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Category
+                    Code
                 </th>
-                <th scope="col" class="px-6 py-3">
-                  Price
-              </th>
                 <th scope="col" class="px-6 py-3">
                     Action
                 </th>
             </tr>
         </thead>
         <tbody>
-          @foreach ($products as $product)
+          @foreach ($categories as $category)
             <tr class="odd:bg-white even:bg-gray-50">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                   {{ $loop->iteration }}
                 </th>
                 <td class="px-6 py-4">
-                  {{ $product->product_name }}
+                  {{ $category->name }}
                 </td>
                 <td class="px-6 py-4">
-                  {{ $product->category->name }}
+                  {{ $category->code }}
                 </td>
-                <td class="px-6 py-4">
-                  {{ $product->price }}
-              </td>
                 <td class="px-6 py-4 flex justify-start">
-                          <a href="/dashboard/posts/{{ $product->code}}" class="text-white bg-blue-300  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 ">
-                            <svg class="w-4 h-4 text-gray-800  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
-                              <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                                <path d="M10 13c4.97 0 9-2.686 9-6s-4.03-6-9-6-9 2.686-9 6 4.03 6 9 6Z"/>
-                              </g>
-                            </svg>
-                          </a>
-                          <a href="/dashboard/posts/{{ $product->code }}/edit"  class="text-white bg-yellow-300  focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
-                            <svg class="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v3m5-3v3m5-3v3M1 7h7m1.506 3.429 2.065 2.065M19 7h-2M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm6 13H6v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L8 16Z"/>
-                            </svg>
-                          </a>
+                    <a href="/dashboard/categories/{{$category->code}}/edit"  class="text-white bg-yellow-300  focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
+                        <svg class="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v3m5-3v3m5-3v3M1 7h7m1.506 3.429 2.065 2.065M19 7h-2M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm6 13H6v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L8 16Z"/>
+                        </svg>
+                      </a>
                           <a href="#" class="text-white bg-red-300  focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
                             <svg class="w-4 h-4 text-gray-800 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -162,7 +122,6 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
         </tbody>
     </table>
 </div>
-
-
+S
 
 @endsection
