@@ -41,7 +41,7 @@
   font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4">Create New Product</a>
 
   {{-- pdf --}}
-    <a href="#" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 
+  <a href="{{route ('PdfReporting') }}" target="_blank"   class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300
     font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-4 ">
     <div class="flex justify-between">
     <svg class="w-4 h-4 mb-2 mr-1 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
