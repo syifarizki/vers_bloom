@@ -2,21 +2,21 @@
 
 @section('container')
 
- <div href="#" class="flex flex-col items-center ml-48 w-full h-full bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl ">
-    @if ($product->image)
-    <img class="object-cover w-full rounded-t-lg max-h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{$product->image }}" alt="{{ $product->category->name }}">  
-    @else
-    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://source.unsplash.com/500x400?{{ $product->category->name }}" alt="{{ $product->category->name }}">  
-    @endif
-    <div class="flex flex-col justify-between p-4 leading-normal">
-        
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $product->product_name}}</h5>
-       <p>Common Name : {{ $product->common_name }}</p>
-       <p>Code : {{ $product->code}}</p>
-        <p>Category : {{ $product->category->name }} </p>
-        <p>{{ $product->price }}</p>
-        {!! $product->description !!}
-     
+ <div href="#" class="flex flex-col items-center ml-48 w-full h-full bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl ">    
+        <div href="#" class="flex flex-col items-center ml-48 w-full h-full bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl ">
+            @if ($product->image)
+            <img class="object-cover w-full rounded-t-lg max-h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{$product->image }}" alt="{{ $product->category->name }}">  
+            @else
+            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://source.unsplash.com/500x400?{{ $product->category->name }}" alt="{{ $product->category->name }}">  
+            @endif
+            <div class="flex flex-col justify-between p-4 leading-normal">
+                
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $product->product_name}}</h5>
+               <p>Common Name : {{ $product->common_name }}</p>
+               <p>Code : {{ $product->code}}</p>
+                <p>Category : {{ $product->category->name }} </p>
+                <p>{{ $product->price }}</p>
+                {!! $product->description !!}
         
         <form class="max-w-xs mx-auto">
             <div class="relative flex items-center max-w-[8rem]">
