@@ -8,6 +8,8 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
+
 
 use App\Models\Category;
 /*
@@ -21,12 +23,11 @@ use App\Models\Category;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/home', function () {
-    return view('home');
-});
+
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
+
 Route::get('/login',  [LoginController::class,'index'])->name('login')-> middleware('guest');
 Route::post('/login',  [LoginController::class,'authenticate']);
 Route::post('/logout',  [LoginController::class,'logout']);
