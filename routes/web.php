@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 
 
 use App\Models\Category;
@@ -42,32 +43,36 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::get('/product', [ProductController::class, 'index']);
- // halaman detail product
-Route::get('/product/{product:code}', [ProductController::class, 'show']);
-
+// Akses hanya admin yang dapat masuk ke dashboard
 Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
 
+// Halaman Dashboard Product
 Route::resource('/dashboard/posts', DashboardProductController::class)->middleware('auth');
 
+// Pdf reporting
 Route::get('/dashboard/cetak-data', [DashboardProductController::class, 'cetakProduk'])->name('PdfReporting');
 
+// Dashboard hanya dapat diakses Admin
 Route::middleware(['admin'])->group(function () {
     // Rute-rute yang memerlukan hak akses admin
     Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
 });
 
+// Halaman Product
+Route::get('/product', [ProductController::class, 'index']);
+ // halaman detail product
+ Route::get('/product/{product:code}', [ProductController::class, 'show'])->name('products.show');
+
 //Category
+Route::get('/categories', [CategoryController::class, 'index']);
 
-Route::get('/categories', function() {
-    return view('categories', [
-        'title' => 'Product Categories',
-        'categories' => Category::all()
-    ]);
-});
+// Halaman detail Category
+Route::get('/categories/{category:code}', [CategoryController::class, 'show'])->name('categories.show')->middleware('auth');
 
-// Rute resource
+
+// Rute resource Dashboard Category
 Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show')->middleware('auth');
 
+// Rute Edit Category
 Route::get('/dashboard/categories/{category:code}/edit', [DashboardCategoryController::class, 'edit'])->name('dashboard.categories.edit');
 
