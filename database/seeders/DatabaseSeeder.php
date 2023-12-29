@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'code' => 'llp'
         ]);
 
-        $url = "https://perenual.com/api/species-list?key=sk-QS2Q658a6307309aa3586";
+        $url = "https://perenual.com/api/species-list?indoor=1&key=sk-QS2Q658a6307309aa3586";
 
         $response = Http::get($url);
         $products = $response->json()['data'];

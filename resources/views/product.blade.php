@@ -76,13 +76,9 @@
     <div class=" px-6 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4  ">
       @foreach ($products as $product)
         <div class="w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6">
-            <a href="/product/{{ $product->code }}">
-              @if ($product->image)
-              <img class="p-8 rounded-t-lg" src="{{ asset('storage/' . $product->default_image->thumbnail) }}">  
-              @else
-              <img class="p-8 rounded-t-lg" src="https://source.unsplash.com/500x400?{{ $product->common_name }}"/>
-              @endif
-            </a>
+          <a href="/product/{{ $product->code }}">
+            <img class="p-8 rounded-t-lg" src="{{ $product->image }}">  
+        </a>
             <div class="px-5 pb-5">
                 <a href="/product/{{ $product->code }}">
                     <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">{{ $product->common_name }}</h5>

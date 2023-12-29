@@ -4,7 +4,7 @@
 
  <div href="#" class="flex flex-col items-center ml-48 w-full h-full bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl ">
     @if ($product->image)
-    <img class="object-cover w-full rounded-t-lg max-h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->category->name }}">  
+    <img class="object-cover w-full rounded-t-lg max-h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{$product->image }}" alt="{{ $product->category->name }}">  
     @else
     <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://source.unsplash.com/500x400?{{ $product->category->name }}" alt="{{ $product->category->name }}">  
     @endif
