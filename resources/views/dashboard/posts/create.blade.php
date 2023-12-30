@@ -67,12 +67,14 @@
 </div>
 <div class="mb-5 px-8">
 <label class="block mb-2 text-md font-bold text-gray-900 " for="image">Post Image</label>
+
   <input class="block w-full text-sm text-gray-900  rounded-lg cursor-pointer  focus:outline-none @error('image') bg-red-50 border border-red-500 @enderror" aria-describedby="user_avatar_help" id="image" name="image" type="file" >
   @error('image')
   <div class="imt-2 text-sm text-red-600">
     {{ $message }}
   </div>
   @enderror
+  
 </div>
 <div class="mb-5 px-8">
   <label for="description" class="block mb-2 text-md  font-bold text-gray-900 ">Description</label>

@@ -9,13 +9,13 @@
         <p>Total Products in this Category: {{ $totalProducts }}</p>
         @foreach ($category->products as $product)
             <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6">
-                <a href="{{ url('/product/'.$product->code) }}">
-                    @if ($product->image)
-                        <img class="p-8 rounded-t-lg" src="{{ $product->image }}" alt="{{ $product->category->name }}">
-                    @else
-                        <img class="p-8 rounded-t-lg" src="https://source.unsplash.com/500x400?{{ $product->category->name }}" alt="{{ $product->category->name }}">
+                <a href="/product/{{ $product->code }}">
+                    @if ($product->image && file_exists(public_path('storage/' . $product->image)))
+                      <img class="p-8 rounded-t-lg" src="{{ asset('storage/'.$product->image) }}" >
+                    @elseif ($product->image)
+                      <img class="p-8 rounded-t-lg" src="{{ $product->image }}" >
                     @endif
-                </a>
+                  </a>
                 <div class="px-5 pb-5">
                     <a href="{{ url('/product/'.$product->code) }}">
                         <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">{{ $product->product_name }}</h5>

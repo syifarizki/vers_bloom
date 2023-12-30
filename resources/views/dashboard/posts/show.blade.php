@@ -2,11 +2,19 @@
 
 @section('container')
 <section class="flex justify-center my-10 pt-20">
- <div href="#" class="flex sm:ml-64 flex-col items-center ml-48 w-full h-full bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl ">
+ <div href="#" class="flex sm:ml-64 flex-col items-center ml-48 w-full -full bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl ">
+
+
     <div class="flex flex-col justify-between p-4 leading-normal">
+        
         <a href="/product/{{ $product->code }}">
-            <img class="p-8 rounded-t-lg" src="{{ $product->image }}">  
-        </a>
+            @if ($product->image && file_exists(public_path('storage/' . $product->image)))
+              <img class="p-8 rounded-t-lg" src="{{ asset('storage/'.$product->image) }}" >
+            @elseif ($product->image)
+              <img class="p-8 rounded-t-lg" src="{{ $product->image }}" >
+            @endif
+          </a>
+
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Product Name : {{ $product->product_name}}</h5>
        <p>Common Name : {{ $product->common_name }}</p>
        <p>Code : {{ $product->code}}</p>
