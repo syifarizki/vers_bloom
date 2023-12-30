@@ -29,7 +29,7 @@
                     <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
                         <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
                           <li>
-                            <a href="#" class="block px-14 py-2 hover:bg-gray-100 ">My Profile</a>
+                            <a href="/profile" class="block px-14 py-2 hover:bg-gray-100 ">My Profile</a>
                           </li>
                         </ul>
                         <div class="py-1">
