@@ -43,6 +43,10 @@ Route::get('/cart', function () {
     return view('cart');
 });
 
+Route::get('/profile', function () {
+    return view('profile');
+});
+
 // Akses hanya admin yang dapat masuk ke dashboard
 Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
 
