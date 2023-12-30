@@ -40,7 +40,7 @@ class DashboardProductController extends Controller
      */
     public function store(Request $request)
     {
-
+        
         $validatedData = $request->validate([
             'product_name' => 'required|max:255',
             'common_name' => 'required|max:255',
