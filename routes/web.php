@@ -51,6 +51,10 @@ Route::get('/profile_edit', function () {
     return view('profile_edit');
 });
 
+Route::get('/dashboard/content', function () {
+    return view('dashboard.content.home');
+});
+
 // Akses hanya admin yang dapat masuk ke dashboard
 Route::get('/dashboard', function() {return view('dashboard.index');})->name('dashboard')->middleware('auth');
 
