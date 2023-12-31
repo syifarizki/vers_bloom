@@ -2,11 +2,9 @@
 
 @section('container')
 
-<h1>Category: {{ $category->name }} </h1>
 
 @if ($category->products->count())
     <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        <p>Total Products in this Category: {{ $totalProducts }}</p>
         @foreach ($category->products as $product)
             <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mt-10 mx-6">
                 <a href="/product/{{ $product->code }}">
