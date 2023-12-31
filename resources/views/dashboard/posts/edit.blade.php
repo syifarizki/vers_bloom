@@ -13,46 +13,59 @@
   </div>
   </div>
 
+  <form method="post" action="{{ route('dashboard.products.update', ['product' => $product->id]) }}" class="max-w-2xl mt-10 sm:ml-64" enctype="multipart/form-data">
+    @method('put')
+    @csrf
 
-<form method="post" action="dashboard/posts/{{ $product->code }}" class="max-w-2xl mt-10 sm:ml-64" enctype="multipart/form-data">
-  <div class="mb-5 px-8">
-      <label for="product_name" class="block mb-2 text-md font-bold text-gray-900 ">Product Name</label>
-      <input type="text" id="product_name" name="product_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-  </div>
-  <div class="mb-5 px-8">
-    <label for="common-name" class="block mb-2 text-md  font-bold text-gray-900 ">Common Name</label>
-    <input type="text" id="common-name" name="common-name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-  </div>
-  <div class="mb-5 px-8">
-    <label for="code" class="block mb-2 text-md  font-bold text-gray-900 ">Code</label>
-    <input type="text" id="code" name="code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-  </div>
-  <div class="mb-5 px-8">
-<label for="category" class="block mb-2 text-md  font-bold text-gray-900 ">Category</label>
-<select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-  <option>Outdoor</option>
-  <option>Indoor</option>
-</select>
-</div>
-<div class="mb-5 px-8">
-  <label for="price" class="block mb-2 text-md font-bold text-gray-900 ">Price</label>
-  <input type="text" id="price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-</div>
-<div class="mb-5 px-8">
-<label class="block mb-2 text-md font-bold text-gray-900 " for="image">Post Image</label>
-<img class="object-scale-down h-48 w-48 mb-2" src="/img/jumbotron.png" alt="image description">
-  <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50  focus:outline-none " aria-describedby="user_avatar_help" id="image" type="file">
-</div>
-<div class="mb-5 px-8">
-  <label for="description" class="block mb-2 text-md  font-bold text-gray-900 ">Description</label>
-  <input id="description"  type="hidden" name="description">
-  <trix-editor input="description"></trix-editor>
-</div>
-<div class="mb-5 px-8">
-<button type="submit" class="text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-bold rounded-lg text-md  px-5 py-2.5 me-2 mb-2   focus:outline-none ">Update Product</button>
-</div>
+    <div class="mb-5 px-8">
+        <label for="product_name" class="block mb-2 text-md font-bold text-gray-900">Product Name</label>
+        <input type="text" id="product_name" name="product_name" value="{{ old('product_name', $product->product_name) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    </div>
+    
+    <div class="mb-5 px-8">
+        <label for="common_name" class="block mb-2 text-md font-bold text-gray-900">Common Name</label>
+        <input type="text" id="common_name" name="common_name" value="{{ old('common_name', $product->common_name) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    </div>
+
+    <div class="mb-5 px-8">
+        <label for="code" class="block mb-2 text-md font-bold text-gray-900">Code</label>
+        <input type="text" id="code" name="code" value="{{ old('code', $product->code) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    </div>
+
+    <div class="mb-5 px-8">
+        <label for="category" class="block mb-2 text-md font-bold text-gray-900">Category</label>
+        <select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="1" {{ old('category_id', $product->category_id) == 1 ? 'selected' : '' }}>Outdoor</option>
+            <option value="2" {{ old('category_id', $product->category_id) == 2 ? 'selected' : '' }}>Indoor</option>
+        </select>
+    </div>
+
+    <div class="mb-5 px-8">
+        <label for="price" class="block mb-2 text-md font-bold text-gray-900">Price</label>
+        <input type="text" id="price" name="price" value="{{ old('price', $product->price) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+    </div>
+
+    <div class="mb-5 px-8">
+    <label class="block mb-2 text-md font-bold text-gray-900" for="image">Product Image</label>
+        @if($product->image)
+            <img class="object-scale-down h-48 w-48 mb-2" src="{{ asset($product->image) }}" alt="Product Image">
+        @else
+            <p>No Image Available</p>
+        @endif
+        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="user_avatar_help" id="image" type="file" name="image">
+    </div>
+
+
+    <div class="mb-5 px-8">
+        <label for="description" class="block mb-2 text-md font-bold text-gray-900">Description</label>
+        <input id="description" type="hidden" name="description" value="{{ old('description', $product->description) }}">
+        <trix-editor input="description"></trix-editor>
+    </div>
+
+    <div class="mb-5 px-8">
+        <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-bold rounded-lg text-md px-5 py-2.5 me-2 mb-2 focus:outline-none">Update Product</button>
+    </div>
 </form>
-
 
 <script>
 
