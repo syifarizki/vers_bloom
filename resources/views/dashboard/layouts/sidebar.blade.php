@@ -6,7 +6,7 @@
        </a>
        <ul class="mt-4">
            <li class="mb-1 ">
-               <a href="/dashboard" class="flex items-center py-2 px-4 font-bold text-black hover:bg-white hover:text-black rounded-md active:bg-white "> 
+               <a href="/dashboard/content" class="flex items-center py-2 px-4 font-bold text-black hover:bg-white hover:text-black rounded-md active:bg-white "> 
                    <svg xmlns="http://www.w3.org/2000/svg" class="text-black" width="18" height="18"  viewBox="0 0 32 32">
                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20v10H4V12L16 2l12 10v18h-8V20Z"/>
                </svg> <span class="text-md pl-2  ">Dashboard</span></a>
