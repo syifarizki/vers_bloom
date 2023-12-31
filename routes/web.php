@@ -52,6 +52,10 @@ Route::get('/profile_edit', function () {
     return view('profile_edit');
 });
 
+Route::get('/show', function () {
+    return view('show');
+});
+
 // Route::get('/dashboard/content', function () {
 //     return view('dashboard.content.home');
 // });

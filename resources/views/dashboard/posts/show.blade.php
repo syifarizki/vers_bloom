@@ -3,8 +3,6 @@
 @section('container')
 <section class="flex justify-center my-10 pt-20">
  <div href="#" class="flex sm:ml-64 flex-col items-center ml-48 w-full -full bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl ">
-
-
     <div class="flex flex-col justify-between p-4 leading-normal">
         
         <a href="/product/{{ $product->code }}">
