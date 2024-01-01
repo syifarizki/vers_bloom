@@ -30,6 +30,13 @@ class DashboardCategoryController extends Controller
         return view('dashboard.categories.create');
     }
 
+    public function cetakCategory()
+    {
+        return view('dashboard.categories.cetak', [
+            'categories' => Category::all()
+        ]);
+
+    }
     /**
      * Store a newly created resource in storage.
      */
