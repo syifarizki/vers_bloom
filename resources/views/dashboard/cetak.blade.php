@@ -11,27 +11,6 @@
     <title>Products</title>
 </head>
 <body>
-  {{-- <div class="form-group">
-    <p align="center">TESTER</p>
-      <table class="static" align="center" rules="all" border="1px" style="width:95%;">
-      <tr>
-        <th>NO</th>
-        <th>PRODUCT NAME</th>
-        <th>CATEGORY</th>
-        <th>PRICE</th>
-      </tr>
-      @foreach($products as $product)
-      <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $product->product_name }}</td>
-        <td>{{ $product->category->name }}</td>
-        <td>{{ $product->price }}</td>
-      </tr>
-      @endforeach
-      </table>
-    </div> --}}
-
-
   <p class="text-center text-3xl mt-2 font-semibold mb-5">PRODUCTS</p>
   <section class="flex justify-center ">
     <table class="w-full items-center table-fixed text-sm text-left rtl:text-right text-gray-500 border-b-2 border-black">

@@ -62,6 +62,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard/products', [DashboardProductController::class, 'showProducts'])->name('dashboard.posts.index');
     Route::get('/posts/sortPost', [DashboardProductController::class,'SortByProduct'])->name('posts.index');
     Route::get('/posts/search', [DashboardProductController::class, 'searchPost'])->name('posts.search');
+    Route::get('/dashboard/cetak-data-category', [DashboardCategoryController::class, 'cetakCategory'])->name('PdfReportingCategory');
     // Halaman Dashboard Product
 
 

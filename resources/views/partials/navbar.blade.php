@@ -69,7 +69,7 @@
       <!-- {{-- Tampilkan link "Dashboard" hanya jika user is_admin = 1 --}} -->
       @if(auth()->check() && auth()->user()->is_admin == 1)
         <li>
-            <a href="/dashboard" class="block py-2 px-3 text-black font-bold md:p-0 hover:text-[#94B49F]">Dashboard</a>
+            <a href="/dashboard/content" class="block py-2 px-3 text-black font-bold md:p-0 hover:text-[#94B49F]">Dashboard</a>
         </li>
     @endif     
     </ul>

@@ -47,7 +47,7 @@
                             {{auth()->user()->email }}
                             </p>
                         </div>
-                        
+                        <!--  -->
                         <ul class="py-1" role="none">
                             <li>
                                 <a href="/home"
