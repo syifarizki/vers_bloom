@@ -14,14 +14,18 @@
   </div>
 
 
-<form method="post" action="dashboard/categories/{{ $category->code }}" class="max-w-2xl mt-10 sm:ml-64">
+<form method="post" action="{{ route('categories.update', ['category' => $category->id]) }}" class="max-w-2xl mt-10 sm:ml-64">
+  @method('put')
+  @csrf
+  
+
   <div class="mb-5 px-8">
       <label for="name" class="block mb-2 text-md font-bold text-gray-900 ">Category Name</label>
-      <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+      <input type="text" id="name" name="name" value="{{ old('name',$category->name) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
   </div>
   <div class="mb-5 px-8">
     <label for="code" class="block mb-2 text-md  font-bold text-gray-900 ">Code</label>
-    <input type="text" id="code" name="code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+    <input type="text" id="code" name="code" value="{{ old('code',$category->code) }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
   </div>
 <div class="mb-5 px-8">
 <button type="submit" class="text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-bold rounded-lg text-md  px-5 py-2.5 me-2 mb-2   focus:outline-none ">Update Category</button>

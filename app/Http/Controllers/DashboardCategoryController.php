@@ -10,10 +10,16 @@ class DashboardCategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = $request->input('query');
+        $categories = $query
+        ? Category::where('name', 'like', "%$query%")->get()
+        : Category::all();
         return view('dashboard.categories.index', [
-            'categories' => Category::all()
+            'categories' => $categories,
+            'query' => $query,
+
         ]);
     }
 
@@ -63,7 +69,14 @@ class DashboardCategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'code' => 'required|string|max:50',
+        ]);
+
+        $category->update($request->only(['name','code']));
+
+        return redirect('/dashboard/categories')->with('success', 'Behasil Update Katgeori');
     }
 
     /**
@@ -75,5 +88,17 @@ class DashboardCategoryController extends Controller
         Category::destroy($category->id);
 
         return redirect('/dashboard/categories')->with('success', 'Category has been deleted!!');
+    }
+    public function SortCategory(Request $request)
+    {
+        $sortBy = $request->get('sort_by', 'latest');
+        if ($sortBy === 'asc') {
+            $categories = Category::orderBy("name")->get();
+        } elseif ($sortBy === 'desc') {
+            $categories = Category::orderByDesc("name")->get();
+        } else {
+            $categories = Category::latest()->get();
+        }
+        return view('dashboard.categories.index', compact('categories'));
     }
 }

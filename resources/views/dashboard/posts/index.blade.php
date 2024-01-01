@@ -11,9 +11,12 @@
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
           </svg>
       </div>
-      <input type="search" id="default-search" class="block w-80 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-neutral-50 focus:border-neutral-50 " placeholder="Search..." required>
-      <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-neutral-50 font-medium rounded-lg text-sm px-4 py-2 ">
-        Search</button>
+      <form id="searchForm" action="/dashboard/posts" method="get">
+        <div class="relative mt-5 ml-10 mr-10">
+            <input type="search" name="query" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search...." value="{{ old('query', request('query')) }}" >
+            <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-[#94B49F] hover:bg-slate-200 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2">Search</button>
+        </div>
+    </form>
   </div>
 </form>
 </div>
@@ -50,7 +53,7 @@
   </a>
   
     {{-- sort --}}
-    <a id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-green-700
+    <a id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-green-700 
      hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg 
      text-sm px-5 py-2.5 text-center inline-flex items-center mb-4" type="button">Sort by
        <svg class="w-2.5 h-2.5 ms-3 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -59,49 +62,87 @@
     </a>
       
       <!-- Dropdown menu -->
+      <!-- <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+            <li>
+                <a href="" onclick="handleSort('price_low_high')" class="block px-4 py-2 hover:bg-gray-100">
+                    <div class="flex justify-between">Price Low-High</div>
+                </a>
+            </li>
+            <li>
+                <a href="" onclick="handleSort('price_high_low')" class="block px-4 py-2 hover:bg-gray-100">
+                    <div class="flex justify-between">Price High-Low</div>
+                </a>
+            </li>
+            <li>
+                <a href="" onclick="handleSort('latest')" class="block px-4 py-2 hover:bg-gray-100">
+                    <div class="flex justify-between">Latest Product</div>
+                </a>
+            </li>
+        </ul>
+      </div> -->
       <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
           <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownDefaultButton">
             <li>
-              <a href="#" class="block px-4 py-2  hover:bg-gray-100  "> Price low-high </a>
+              <a href="{{ route('posts.index', ['sort_by' => 'price_low_high']) }}" class="block px-4 py-2 hover:bg-gray-100 {{ request('sort_by') == 'price_low_high' ? 'active' : '' }} " data-sort="price_low_high"> 
+                <div class="flex justify-between">
+                   Price Low-High
+                </div>
+              </a>
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100  "> Price high-low </a>
+              <a href="{{ route('posts.index', ['sort_by' => 'price_high_low']) }}" class="block px-4 py-2 hover:bg-gray-100 {{ request('sort_by') == 'price_high_low' ? 'active' : '' }}" data-sort="price_high_low"  > 
+                <div class="flex justify-between">
+                   Price High-Low
+                </div>
+              </a>
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Latest Product </a>
+              <a href="{{ route('posts.index', ['sort_by' => 'latest']) }}" class="block px-4 py-2 hover:bg-gray-100  {{ request('sort_by') == 'latest' ? 'active' : '' }} " data-sort="latest"> 
+                <div class="flex justify-between">
+                   Latest Product
+                </div>
+              </a>
             </li>
           </ul>
       </div>
-      
+    
       {{-- filter --}}
       
-<a id="dropdownCheckboxButton" data-dropdown-toggle="dropdownDefaultCheckbox" class="text-white bg-green-700
-hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg 
-text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="button"> <svg class="w-4 h-4 text-white  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2.133 2.6 5.856 6.9L8 14l4 3 .011-7.5 5.856-6.9a1 1 0 0 0-.804-1.6H2.937a1 1 0 0 0-.804 1.6Z"/>
-</svg> Filter by 
-  <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-  </svg>
-</a>
-  
-  <!-- Dropdown menu -->
-  <div id="dropdownDefaultCheckbox" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow ">
-      <ul class="p-3 space-y-3 text-sm text-gray-700 " aria-labelledby="dropdownCheckboxButton">
-        <li>
-          <div class="flex items-center">
-            <input id="checkbox-item-1" type="checkbox" value="" class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500  focus:ring-2 ">
-            <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 ">Category</label>
-          </div>
-        </li>
-        <li>
-        
-      </ul>
-  </div>
-  
-    </div> 
+      <div class="relative">
+      <form id="categoryForm" action="{{ route('dashboard.posts.index') }}" method="GET">
+        @csrf
+        <label for="filterSelect" class="sr-only">Filter by:</label>
+        <select id="filterSelect" name="category_id" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center mb-4 ml-3" onchange="this.form.submit()">
+            <option value="">Filter By Category</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+            @endforeach
+        </select>
+      </form>
+    </div>
+    </div>
+    <!-- <div class="relative">
+    <form id="categoryForm" action="{{ route('dashboard.posts.index') }}" method="GET">
+        @csrf
+        <label for="filterSelect" class="sr-only">Filter by:</label>
+        <select id="filterSelect" name="category_id" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center mb-4 ml-3" onchange="handleFilterChange()">
+            <option value="">Filter By Category</option>
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
+            @endforeach
+        </select>
+    </form> 
+    </div>
+  </div> -->
 
-    <table class="w-full mt-6  items-center table-fixed text-sm text-left rtl:text-right text-gray-500  ">
+
+
+    <table id="filteredResultsContainer" class="w-full mt-6  items-center table-fixed text-sm text-left rtl:text-right text-gray-500  ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-400 ">
             <tr>
                 <th scope="col" class="px-6 py-3">
@@ -122,6 +163,7 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
             </tr>
         </thead>
         <tbody>
+        @if (count($products) > 0)
           @foreach ($products as $product)
             <tr class="odd:bg-white even:bg-gray-50">
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
@@ -134,10 +176,10 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
                   {{ $product->category->name }}
                 </td>
                 <td class="px-6 py-4">
-                  {{ $product->price }}
+                {{ 'Rp ' . number_format($product->price, 0, ',', '.') }}
               </td>
                 <td class="px-6 py-4 flex justify-start">
-                          <a href="/dashboard/posts/{{ $product->code}}" class="text-white bg-blue-300  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 ">
+                          <a href="/dashboard/posts/{{ $product->id}}" class="text-white bg-blue-300  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 ">
                             <svg class="w-4 h-4 text-gray-800  " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                               <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                 <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
@@ -145,7 +187,7 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
                               </g>
                             </svg>
                           </a>
-                          <a href="/dashboard/posts/{{ $product->code }}/edit"  class="text-white bg-yellow-300  focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
+                          <a href="{{ route('dashboard.products.edit', ['product' => $product->id]) }}" class="text-white bg-yellow-300 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
                             <svg class="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v3m5-3v3m5-3v3M1 7h7m1.506 3.429 2.065 2.065M19 7h-2M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm6 13H6v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L8 16Z"/>
                             </svg>
@@ -161,10 +203,72 @@ text-sm px-5 py-2.5 text-center inline-flex items-center mb-4 ml-3 " type="butto
                           </form>
                 </td>
             </tr>
-            
           @endforeach 
+          @else
+            <tr>
+                <td colspan="5" class="px-6 py-4 text-gray-500 text-center">
+                    No products found for your search.
+                </td>
+            </tr>
+          @endif
         </tbody>
     </table>
+    <!-- <script>
+        $(document).ready(function() {
+        $('.dropdown-sort a').click(function() {
+            $('.dropdown-sort a').removeClass('active');
+            $(this).addClass('active');
+            handleSortChange($(this).data('sort'));
+        });
+        });
+    </script>
+    <script>
+        function handleFilterChange() {
+            var selectedCategory = $('#filterSelect').val();
+            var selectedSort = $('.dropdown-sort a.active').data('sort'); 
+            window.location.href = '{{ route("posts.index") }}' + '?sort_by=' + selectedSort + '&category_id=' + selectedCategory;
+            $.ajax({
+              url: '/dashboard/products',
+                type: 'GET',
+                data: { category_id: selectedCategory },
+                success: function(response) {
+                  console.log(response);
+                  $('#filteredResultsContainer tbody').html(response);
+                },
+                error: function(xhr) {
+                }
+            });
+        }
+    </script> -->
+    <!-- <script>
+    function handleSort(sortType) {
+    const url = new URL(window.location.href);
+        url.searchParams.delete('sort_by');
+        if (sortType) {
+            url.searchParams.set('sort_by', sortType);
+        }
+        history.replaceState({}, '', url.toString());
+        updateTableWithSort(sortType);
+    }
+
+        function updateTableWithSort(sortType) {
+        $.ajax({
+            url: '/posts/sortPost',
+            type: 'GET',
+            data: { sort_by: sortType },
+            success: function(response) {
+                updateTable(response);
+            },
+            error: function(xhr) {
+            }
+        });
+    }
+
+    function updateTable(data) {
+      $('#productTable tbody').empty();
+      $('#productTable tbody').html(data);
+    }
+</script> -->
 </div>
 
 
