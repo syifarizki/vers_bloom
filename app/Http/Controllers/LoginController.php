@@ -25,7 +25,7 @@ class LoginController extends Controller
 
             // Tambahan logika untuk pengarahan ke dashboard jika is_admin adalah 1
             if (Auth::user()->is_admin == 1) {
-                return redirect()->route('dashboard'); // Ganti 'dashboard' dengan nama rute yang sesuai
+                return redirect()->route('dashboard.content.index'); // Ganti 'dashboard' dengan nama rute yang sesuai
             }
 
             return redirect()->intended('/');
