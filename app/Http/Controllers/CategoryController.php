@@ -9,13 +9,19 @@ use App\Http\Controllers\ProductController;
 
 class CategoryController extends Controller
 {
-    public function index() {               
-
+    public function index(Request $request)
+    {
+        $query = $request->input('query');
+        $categories = $query
+            ? Category::where('name', 'like', "%$query%")->get()
+            : Category::all();
+    
         return view('categories', [
-            'title' => 'Product Categories',
-            'categories' => Category::all()
+            'categories' => $categories,
+            'query' => $query,
         ]);
     }
+    
 
     
     public function show(Category $category)
@@ -29,12 +35,5 @@ class CategoryController extends Controller
             'totalProducts' => $totalProducts, // Menambahkan total jumlah produk
         ]);
     }
-
-    public function search(Request $request)
-    {
-        $query = $request->input('query');
-        $products = Product::where('name', 'like', '%' . $query . '%')->get();
-
-        return view('categories', compact('categories'));
-    }
+    
 }

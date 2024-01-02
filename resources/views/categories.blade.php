@@ -5,7 +5,7 @@
     <h3 class="font-bold text-left ml-10 text-4xl">Product Categories</h3>
     
 
-      <form action="{{ route('categories.search') }}" method="get">
+      <form action="{{ route('categories') }}" method="get">
         <div class="relative mt-5 ml-10 mr-10">
             <input type="search" name="query" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search...." value="{{ old('query', request('query')) }}" >
             <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-[#94B49F] hover:bg-slate-200 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2">Search</button>
