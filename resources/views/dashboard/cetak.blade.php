@@ -33,7 +33,7 @@
       <tbody class="px-10 ">
         @foreach ($products as $product)
           <tr class="odd:bg-white even:bg-gray-50 border-x border-y">
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrapborder-x ">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap border-x ">
                 {{ $loop->iteration }}
               </th>
               <td class="px-6 py-4 border-x border-y">

@@ -15,7 +15,7 @@ class ProductController extends Controller
     
     return view('product', [
         "title" => "Shop All Product",
-        "products" => Product::latest()->paginate(10)
+        "products" => Product::latest()->get()
     ]);
     }
 
@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-        $products = Product::where('product_name', 'like', '%' . $query . '%')->paginate(10);
+        $products = Product::where('product_name', 'like', '%' . $query . '%')->get();
 
         return view('product', compact('products'));
     }
@@ -43,8 +43,24 @@ class ProductController extends Controller
         } else {
             $products = Product::latest()->get();
         }
-
+        $categories = Category::all();
         return view('product', compact('products'));
+    }
+
+    public function showProducts(Request $request)
+    {
+        $categoryId = $request->input('category_id');
+        $category = $categoryId ? Category::findOrFail($categoryId) : null;
+      
+        if ($categoryId) {
+            $products = Product::where('category_id', $category->id)->get();
+        } else {
+            $products = Product::all();
+        }
+    
+        $categories = Category::all();
+    
+        return view('product', compact('category', 'products', 'categories'));
     }
     
 }

@@ -29,4 +29,12 @@ class CategoryController extends Controller
             'totalProducts' => $totalProducts, // Menambahkan total jumlah produk
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $products = Product::where('name', 'like', '%' . $query . '%')->get();
+
+        return view('categories', compact('categories'));
+    }
 }

@@ -42,7 +42,7 @@
                   <h2 class="mb-2 text-sm font-semibold text-white ml-4 uppercase">MENU</h2>
                   <ul class="text-white  font-medium">
                       <li class="mb-1 ml-4">
-                          <a href="#bestseller" class="hover:underline  ">Best Seller</a>
+                          <a href="#bestseller" class="hover:underline  ">Latest Product</a>
                       </li>
                       <li>
                           <a href="#about" class="hover:underline ml-4">About Us</a>

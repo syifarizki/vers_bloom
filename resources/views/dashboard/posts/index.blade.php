@@ -1,24 +1,19 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class=" sm:ml-64 border-b border-gray-200 mt-14 pt-8 mb-5 flex justify-between">
+<div class=" sm:ml-64 border-b border-gray-200 mt-5 pt-8 mb-5 flex justify-between">
   <p class="text-4xl font-bold px-8 py-8">My Products</p>
-<form class="mt-3 mr-3">   
-  <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-  <div class="relative ">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-          </svg>
-      </div>
-      <form id="searchForm" action="/dashboard/posts" method="get">
-        <div class="relative mt-5 ml-10 mr-10">
-            <input type="search" name="query" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search...." value="{{ old('query', request('query')) }}" >
-            <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-[#94B49F] hover:bg-slate-200 focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2">Search</button>
+  <form class="mt-8 mr-3" id="searchForm" action="/dashboard/posts" method="get">   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+    <div class="relative ">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
         </div>
-    </form>
-  </div>
-</form>
+        <input type="search" name="query" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search...." value="{{ old('query', request('query')) }}" >
+    </div>
+  </form>
 </div>
 
 
@@ -124,7 +119,7 @@
       </form>
     </div>
     </div>
-    <!-- <div class="relative">
+    {{-- <!-- <div class="relative">
     <form id="categoryForm" action="{{ route('dashboard.posts.index') }}" method="GET">
         @csrf
         <label for="filterSelect" class="sr-only">Filter by:</label>
@@ -138,26 +133,26 @@
         </select>
     </form> 
     </div>
-  </div> -->
+  </div> --> --}}
 
 
 
-    <table id="filteredResultsContainer" class="w-full mt-6  items-center table-fixed text-sm text-left rtl:text-right text-gray-500  ">
+    <table id="filteredResultsContainer" class="w-full mt-6  items-center table-fixed text-sm text-left rtl:text-right text-gray-500 border-b-2 border-black ">
         <thead class="text-xs text-gray-700 uppercase bg-gray-400 ">
-            <tr>
-                <th scope="col" class="px-6 py-3">
+            <tr class="border-x">
+                <th scope="col" class="px-6 py-3 border-x">
                    No
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 border-x">
                     Product Name
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 border-x">
                     Category
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 border-x">
                   Price
               </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 border-x">
                     Action
                 </th>
             </tr>
@@ -165,18 +160,18 @@
         <tbody>
         @if (count($products) > 0)
           @foreach ($products as $product)
-            <tr class="odd:bg-white even:bg-gray-50">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+            <tr class="odd:bg-white even:bg-gray-50 border-x border-y">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap border-x border-y">
                   {{ $loop->iteration }}
                 </th>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 border-x border-y">
                   {{ $product->product_name }}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 border-x border-y">
                   {{ $product->category->name }}
                 </td>
-                <td class="px-6 py-4">
-                  {{ $product->price }}
+                <td class="px-6 py-4 border-x border-y">
+                  {{ 'Rp ' . number_format($product->price, 0, ',', '.') }}
               </td>
                 <td class="px-6 py-4 flex justify-start">
                           <a href="/dashboard/posts/{{ $product->id}}" class="text-white bg-blue-300  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 ">

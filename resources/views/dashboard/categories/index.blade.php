@@ -1,21 +1,19 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class=" sm:ml-64 border-b border-gray-200 mt-14 pt-8 mb-5 flex justify-between">
+<div class=" sm:ml-64 border-b border-gray-200 mt-10 pt-8 mb-5 flex justify-between">
   <p class="text-4xl font-bold px-8 py-8">Product Categories</p>
-<form class="mt-3 mr-3">   
-  <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
-  <div class="relative ">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-          <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-          </svg>
-      </div>
-      <input type="search" id="default-search" class="block w-80 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-neutral-50 focus:border-neutral-50 " placeholder="Search..." required>
-      <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-neutral-50 font-medium rounded-lg text-sm px-4 py-2 ">
-        Search</button>
-  </div>
-</form>
+  <form class="mt-3 mr-3" id="searchForm" action="/dashboard/categories" method="get">   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+    <div class="relative ">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="search" name="query" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50" placeholder="Search...." value="{{ old('query', request('query')) }}" >
+    </div>
+  </form>
 </div>
 
 
@@ -75,36 +73,36 @@
   
     </div> 
 
-    <table class="w-full mt-6  items-center table-fixed text-sm text-left rtl:text-right text-gray-500  ">
+    <table class="w-full mt-6  items-center table-fixed text-sm text-left rtl:text-right text-gray-500  border-b-2 border-black">
         <thead class="text-xs text-gray-700 uppercase bg-gray-400 ">
-            <tr>
-                <th scope="col" class="px-6 py-3">
+            <tr class="border-x">
+                <th scope="col" class="px-6 py-3 border-x">
                    No
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 border-x">
                     Category Name
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 border-x">
                     Code
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 border-x">
                     Action
                 </th>
             </tr>
         </thead>
         <tbody>
           @foreach ($categories as $category)
-            <tr class="odd:bg-white even:bg-gray-50">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+            <tr class="odd:bg-white even:bg-gray-50 border-x border-y">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap border-x border-y">
                   {{ $loop->iteration }}
                 </th>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 border-x border-y">
                   {{ $category->name }}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 border-x border-y">
                   {{ $category->code }}
                 </td>
-                <td class="px-6 py-4 flex justify-start">
+                <td class="px-6 py-4 flex justify-start border-x border-y">
                 <a href="{{ route('dashboard.categories.edit', ['category' => $category->code]) }}"  class="text-white bg-yellow-300  focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2">
                         <svg class="w-4 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1v3m5-3v3m5-3v3M1 7h7m1.506 3.429 2.065 2.065M19 7h-2M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm6 13H6v-2l5.227-5.292a1.46 1.46 0 0 1 2.065 2.065L8 16Z"/>

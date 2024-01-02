@@ -2,21 +2,21 @@
 
 @section('container')
 
-<section class="flex justify-left ml-3 my-2 mr-96 mb-8">
+<section class="flex justify-center mr-40 mb-8 -mt-16">
  <div href="#" class="flex shadow-xl sm:ml-64 flex-col items-center ml-48 w-full h-full bg-slate-100 border border-gray-200 rounded-xl  md:flex-row md:max-w-xl ">
     <div class="flex flex-col justify-between p-4 leading-normal">
     <a href="/product/{{ $product->code }}">
-            @if ($product->image && file_exists(public_path('storage/' . $product->image)))
-              <img class="p-8 rounded-t-lg" src="{{ asset('storage/'.$product->image) }}" >
-            @elseif ($product->image)
-              <img class="p-8 rounded-t-lg" src="{{ $product->image }}" >
-            @endif
-          </a>
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">Product Name : {{  $product->product_name}}</h5>
+                @if ($product->image && file_exists(public_path('storage/' . $product->image)))
+                  <img class="p-8 rounded-t-lg" src="{{ asset('storage/'.$product->image) }}" >
+                @elseif ($product->image)
+                  <img class="p-8 rounded-t-lg" src="{{ $product->image }}" >
+                @endif
+              </a>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-black">{{  $product->product_name}}</h5>
         <p>Common Name : {{ $product->common_name }}</p>
        <p>Code : {{ $product->code}}</p>
         <p>Category : {{ $product->category->name }} </p>
-        <p>Price : {{ $product->price }}</p>
+        <p>Price : {{ 'Rp ' . number_format($product->price, 0, ',', '.') }}</p>
         <p> Deskripsi : {!! $product->description !!} </p>
      
          

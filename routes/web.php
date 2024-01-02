@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CartController;
 
 
 use App\Http\Controllers\DashboardProductController;
@@ -41,8 +42,11 @@ Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
 
 Route::get('/cart', function () {
-    return view('cart');
+    return view('cart', [
+        'title' => "Cart"
+    ]);
 });
+
 
 Route::get('/profile', function () {
     return view('profile');
@@ -80,7 +84,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/products/showProducts', [DashboardProductController::class, 'showProducts']);
 
 // Halaman Product
-Route::get('/product', [ProductController::class, 'index']);
+Route::get('/product', [ProductController::class, 'index'])->name('product');
  // halaman detail product
  Route::get('/product/{product:code}', [ProductController::class, 'show'])->name('products.show');
 
@@ -96,6 +100,7 @@ Route::get('/profile/edit', [DashboardProductController::class, 'editProfile'])-
 Route::post('/profile/update', [DashboardProductController::class, 'updateProfile'])->name('profile.update');
 
 
+Route::get('/categories/search', [CategoryController::class, 'search'])->name('categories.search');
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/products', [ProductController::class, 'SortBy'])->name('products.index');
 
@@ -114,5 +119,11 @@ Route::get('/dashboard/categories/{category:code}/edit', [DashboardCategoryContr
 Route::get('/dashboard/content/index', [DashboardController::class, 'index'])
     ->name('dashboard.content.index')
     ->middleware('auth');
-
     
+Route::get('/categories/{category:code}', function(Category $category) {
+    return view('product', [
+        'title' => "Product By Category : $category->name",
+        'products' => $category->products
+    ]);
+});
+
