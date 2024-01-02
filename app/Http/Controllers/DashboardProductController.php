@@ -86,10 +86,15 @@ class DashboardProductController extends Controller
      */
     public function edit(Product $product)
     {
+        // Mengambil semua kategori dari database
+        $categories = Category::all();
+    
         return view('dashboard.posts.edit', [
-            'product' => $product
+            'product' => $product,
+            'categories' => $categories
         ]);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -130,19 +135,24 @@ class DashboardProductController extends Controller
 
         return redirect('/dashboard/posts')->with('success', 'Product has been deleted!!');
     }
-    public function SortByProduct(Request $request)
-    {
-        $sortBy = $request->get('sort_by', 'latest');
-        if ($sortBy === 'price_low_high') {
-            $products = Product::orderBy('price')->get();
-        } elseif ($sortBy === 'price_high_low') {
-            $products = Product::orderByDesc('price')->get();
-        } else {
-            $products = Product::latest()->get();
-        }
-        $categories = Category::all();
-        return view('dashboard.posts.index', compact('products','categories'));
+public function SortByProduct(Request $request)
+{
+    $sortBy = $request->get('sort_by', 'latest');
+
+    if ($sortBy === 'price_low_high') {
+        $products = Product::orderByRaw('CAST(price AS UNSIGNED) ASC')->get();
+    } elseif ($sortBy === 'price_high_low') {
+        $products = Product::orderByRaw('CAST(price AS UNSIGNED) DESC')->get();
+    } else {
+        $products = Product::latest()->get();
     }
+
+    $categories = Category::all();
+    return view('dashboard.posts.index', compact('products', 'categories'));
+}
+
+    
+
     public function showProducts(Request $request)
     {
         $categoryId = $request->input('category_id');

@@ -36,16 +36,21 @@ class ProductController extends Controller
     public function SortBy(Request $request)
     {
         $sortBy = $request->get('sort_by', 'latest');
+        
         if ($sortBy === 'price_low_high') {
-            $products = Product::orderBy('price')->get();
+            $products = Product::orderByRaw('CAST(price AS UNSIGNED) ASC')->get();
         } elseif ($sortBy === 'price_high_low') {
-            $products = Product::orderByDesc('price')->get();
+            $products = Product::orderByRaw('CAST(price AS UNSIGNED) DESC')->get();
         } else {
             $products = Product::latest()->get();
         }
+    
         $categories = Category::all();
         return view('product', compact('products'));
     }
+    
+    
+
 
     public function showProducts(Request $request)
     {
