@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
                 'image' => $thumbnailUrl,
                 'code' => Str::random(6), // Menyertakan nilai untuk kolom 'code'
                 'price' => rand(50000, 500000), // Fungsi rand() dengan huruf kecil
-                'description' => Str::random(150),
+                'description' => Str::random(30),
             ];
         
             Product::create($productData);
