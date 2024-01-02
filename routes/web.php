@@ -89,7 +89,7 @@ Route::get('/product', [ProductController::class, 'index'])->name('product');
  Route::get('/product/{product:code}', [ProductController::class, 'show'])->name('products.show');
 
 //Category
-Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 
 // Halaman detail Category
 Route::get('/categories/{category:code}', [CategoryController::class, 'show'])->name('categories.show')->middleware('auth');
@@ -104,7 +104,7 @@ Route::get('/categories/search', [CategoryController::class, 'search'])->name('c
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/products', [ProductController::class, 'SortBy'])->name('products.index');
 
-Route::get('/category/search', [DashboardCategoryController::class, 'searchCategory'])->name('category.search');
+// Route::get('/category/search', [DashboardCategoryController::class, 'searchCategory'])->name('category.search');
 Route::get('/category/sort', [DashboardCategoryController::class, 'SortCategory'])->name('sort.search');
 
 
@@ -120,10 +120,10 @@ Route::get('/dashboard/content/index', [DashboardController::class, 'index'])
     ->name('dashboard.content.index')
     ->middleware('auth');
     
-Route::get('/categories/{category:code}', function(Category $category) {
-    return view('product', [
-        'title' => "Product By Category : $category->name",
-        'products' => $category->products
-    ]);
-});
+// Route::get('/categories/{category:code}', function(Category $category) {
+//     return view('product', [
+//         'title' => "Product By Category : $category->name",
+//         'products' => $category->products
+//     ]);
+// });
 

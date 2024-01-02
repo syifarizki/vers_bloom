@@ -33,12 +33,17 @@
     </div>
 
     <div class="mb-5 px-8">
-        <label for="category" class="block mb-2 text-md font-bold text-gray-900">Category</label>
-        <select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-            <option value="1" {{ old('category_id', $product->category_id) == 1 ? 'selected' : '' }}>Outdoor</option>
-            <option value="2" {{ old('category_id', $product->category_id) == 2 ? 'selected' : '' }}>Indoor</option>
-        </select>
-    </div>
+      <label for="category" class="block mb-2 text-md font-bold text-gray-900">Category</label>
+      <select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          @foreach ($categories as $category)
+              <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
+                  {{ $category->name }}
+              </option>
+          @endforeach
+      </select>
+  </div>
+  
+  
 
     <div class="mb-5 px-8">
         <label for="price" class="block mb-2 text-md font-bold text-gray-900">Price</label>
