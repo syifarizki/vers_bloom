@@ -171,7 +171,7 @@
                   {{ $product->category->name }}
                 </td>
                 <td class="px-6 py-4 border-x border-y">
-                  {{ 'Rp ' . number_format($product->price, 0, ',', '.') }}
+                  {{ $product->price }}
               </td>
                 <td class="px-6 py-4 flex justify-start">
                           <a href="/dashboard/posts/{{ $product->id}}" class="text-white bg-blue-300  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2 me-2 mb-2 ">

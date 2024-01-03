@@ -76,12 +76,25 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard/products/{product:id}/edit', [DashboardProductController::class, 'edit'])->name('dashboard.products.edit');
     Route::put('/dashboard/products/{product:id}', [DashboardProductController::class, 'update'])->name('dashboard.products.update');
 
-});
-
-    // Tambahkan rute berikut agar sesuai dengan kodingan 2
-
     Route::get('/products/sortPost', [DashboardProductController::class, 'SortByProduct']);
     Route::get('/products/showProducts', [DashboardProductController::class, 'showProducts']);
+
+    // Rute resource Dashboard Category
+    Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show')->middleware('auth');
+    Route::put('categories/{category:id}', [DashboardCategoryController::class, 'update'])->name('dashboard.categories.update');
+
+    Route::get('/dashboard/categories/{category:code}/edit', [DashboardCategoryController::class, 'edit'])->name('dashboard.categories.edit');
+
+    Route::get('/dashboard/content/index', [DashboardController::class, 'index'])
+        ->name('dashboard.content.index')
+        ->middleware('auth');
+
+    // Route::get('/category/search', [DashboardCategoryController::class, 'searchCategory'])->name('category.search');
+Route::get('/category/sort', [DashboardCategoryController::class, 'SortCategory'])->name('category.sort');
+
+});
+
+
 
 // Halaman Product
 Route::get('/product', [ProductController::class, 'index'])->name('product');
@@ -104,26 +117,9 @@ Route::get('/categories/search', [CategoryController::class, 'search'])->name('c
 Route::get('/products/search', [ProductController::class, 'search'])->name('products.search');
 Route::get('/products', [ProductController::class, 'SortBy'])->name('products.index');
 
-// Route::get('/category/search', [DashboardCategoryController::class, 'searchCategory'])->name('category.search');
-Route::get('/category/sort', [DashboardCategoryController::class, 'SortCategory'])->name('sort.search');
-
-
-
-
-// Rute resource Dashboard Category
-Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show')->middleware('auth');
-Route::put('categories/{category:id}', [DashboardCategoryController::class, 'update'])->name('dashboard.categories.update');
-
-Route::get('/dashboard/categories/{category:code}/edit', [DashboardCategoryController::class, 'edit'])->name('dashboard.categories.edit');
-
-Route::get('/dashboard/content/index', [DashboardController::class, 'index'])
-    ->name('dashboard.content.index')
-    ->middleware('auth');
-    
-// Route::get('/categories/{category:code}', function(Category $category) {
-//     return view('product', [
-//         'title' => "Product By Category : $category->name",
-//         'products' => $category->products
-//     ]);
-// });
-
+Route::get('/categories/{category:code}', function(Category $category) {
+    return view('product', [
+        'title' => "Product By Category : $category->name",
+        'products' => $category->products
+    ]);
+});
