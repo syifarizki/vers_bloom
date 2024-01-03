@@ -22,8 +22,8 @@
             </div>
       </div>
   </form>
-  <a href="/profile_edit">
-  <button type="button" class="text-white bg-gray-600  hover:shadow-lg hover:opacity-95 transition duration-300  font-semibold rounded-full text-base px-5 py-2.5 text-center me-2 my-2 ">Edit Profile</button>
+  <a href="/home">
+  <button type="button" class="text-white bg-gray-600  hover:shadow-lg hover:opacity-95 transition duration-300  font-semibold rounded-full text-base px-5 py-2.5 text-center me-2 my-2 ">Back</button>
   </a>
 </div>
 </section>
